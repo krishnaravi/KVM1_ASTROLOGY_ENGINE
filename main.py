@@ -3,6 +3,7 @@ from routers.lagna import router as lagna_router
 from routers.health import router as health_router
 from routers.planet import router as planet_router
 from routers.house import router as house_router
+from routers.chart import router as chart_router
 app = FastAPI(
     title="KVM1 Astrology Engine",
     version="1.0.0"
@@ -32,6 +33,8 @@ app.include_router(lagna_router)
 app.include_router(health_router)
 app.include_router(planet_router)
 app.include_router(house_router)
+app.include_router(chart_router)
+
 # லஹிரி அயனாம்ச முறையைத் தேர்ந்தெடுத்தல்
 swe.set_sid_mode(swe.SIDM_LAHIRI)
 
