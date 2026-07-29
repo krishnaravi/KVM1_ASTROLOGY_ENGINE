@@ -2,6 +2,7 @@ import swisseph as swe
 
 from core.constants import ZODIAC_SIGNS, PLANETS
 from core.swisseph_service import get_julian_day
+from core.nakshatra import get_nakshatra
 from domain.planet import Planet
 
 
@@ -17,11 +18,16 @@ def get_planet_position(jd: float, planet_name: str, planet_id: int):
     sign = ZODIAC_SIGNS[int(longitude // 30)]
     degree = longitude % 30
 
+    nak = get_nakshatra(longitude)
+
     return Planet(
         name=planet_name,
         longitude=round(longitude, 6),
         sign=sign,
-        degree_in_sign=round(degree, 6)
+        degree_in_sign=round(degree, 6),
+        nakshatra=nak["name"],
+        nakshatra_lord=nak["lord"],
+        pada=nak["pada"]
     )
 
 
@@ -39,18 +45,20 @@ def get_all_planets(date_str: str, time_str: str):
             )
         )
 
-    # Rahu
     rahu = next(p for p in planets if p.name == "Rahu")
 
-    # Ketu = Rahu + 180°
     ketu_longitude = (rahu.longitude + 180) % 360
+    ketu_nak = get_nakshatra(ketu_longitude)
 
     planets.append(
         Planet(
             name="Ketu",
             longitude=round(ketu_longitude, 6),
             sign=ZODIAC_SIGNS[int(ketu_longitude // 30)],
-            degree_in_sign=round(ketu_longitude % 30, 6)
+            degree_in_sign=round(ketu_longitude % 30, 6),
+            nakshatra=ketu_nak["name"],
+            nakshatra_lord=ketu_nak["lord"],
+            pada=ketu_nak["pada"]
         )
     )
 

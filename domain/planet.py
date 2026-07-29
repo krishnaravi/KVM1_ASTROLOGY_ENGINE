@@ -7,3 +7,7 @@ class Planet:
     longitude: float
     sign: str
     degree_in_sign: float
+    
+    nakshatra: str = ""
+    nakshatra_lord: str = ""
+    pada: int = 0
