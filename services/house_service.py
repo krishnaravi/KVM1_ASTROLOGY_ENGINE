@@ -1,44 +1,23 @@
-import swisseph as swe
-from datetime import datetime
+from services.house_systems.placidus import calculate as calculate_placidus
 
-swe.set_sid_mode(swe.SIDM_LAHIRI)
 
-ZODIAC_SIGNS = [
-    "மேஷம்", "ரிஷபம்", "மிதுனம்", "கடகம்",
-    "சிம்மம்", "கன்னி", "துலாம்", "விருச்சிகம்",
-    "தனுசு", "மகரம்", "கும்பம்", "மீனம்"
-]
-def get_houses(date_str: str, time_str: str, latitude: float, longitude: float):
-    dt = datetime.strptime(
-        f"{date_str} {time_str}",
-        "%Y-%m-%d %H:%M"
+def get_houses(
+    date_str: str,
+    time_str: str,
+    latitude: float,
+    longitude: float,
+):
+    """
+    Backward-compatible wrapper.
+
+    Existing modules can continue calling get_houses(),
+    while the actual calculation is delegated to the
+    Placidus House System module.
+    """
+
+    return calculate_placidus(
+        date_str=date_str,
+        time_str=time_str,
+        latitude=latitude,
+        longitude=longitude,
     )
-
-    jd = swe.julday(
-        dt.year,
-        dt.month,
-        dt.day,
-        dt.hour + dt.minute / 60.0
-    )
-
-    cusps, ascmc = swe.houses_ex(
-        jd,
-        latitude,
-        longitude,
-        b'P',
-        swe.FLG_SIDEREAL
-    )
-
-    houses = []
-
-    for i in range(12):
-        longitude = cusps[i]
-
-        houses.append({
-            "house": i + 1,
-            "longitude": round(longitude, 6),
-            "sign": ZODIAC_SIGNS[int(longitude // 30)],
-            "degree_in_sign": round(longitude % 30, 6)
-        })
-
-    return houses

@@ -1,5 +1,6 @@
 from services.planet_service import get_all_planets
 from services.house_service import get_houses
+from services.house_lord_service import get_house_lords
 from domain.chart import ChartPlanet
 
 
@@ -26,7 +27,7 @@ def build_rasi_chart(
     date: str,
     time: str,
     latitude: float,
-    longitude: float
+    longitude: float,
 ):
     planets = get_all_planets(date, time)
 
@@ -34,8 +35,10 @@ def build_rasi_chart(
         date,
         time,
         latitude,
-        longitude
+        longitude,
     )
+
+    house_lords = get_house_lords(houses)
 
     chart_planets = []
 
@@ -48,15 +51,16 @@ def build_rasi_chart(
                 degree_in_sign=planet.degree_in_sign,
                 house=get_planet_house(
                     planet.longitude,
-                    houses
+                    houses,
                 ),
                 nakshatra=planet.nakshatra,
                 nakshatra_lord=planet.nakshatra_lord,
-                pada=planet.pada
+                pada=planet.pada,
             )
         )
 
     return {
         "houses": houses,
-        "planets": chart_planets
+        "house_lords": house_lords,
+        "planets": chart_planets,
     }
