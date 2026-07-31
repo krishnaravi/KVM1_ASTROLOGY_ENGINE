@@ -4,6 +4,7 @@ from services.house_lord_service import get_house_lords
 from services.house_lord_position_service import get_house_lord_positions
 from services.house_occupants_service import get_house_occupants
 from services.conjunction_service import get_conjunctions
+from services.chart_pipeline import ChartPipeline
 from domain.chart import ChartPlanet
 
 
@@ -32,6 +33,8 @@ def build_rasi_chart(
     latitude: float,
     longitude: float,
 ):
+    pipeline = ChartPipeline()
+
     planets = get_all_planets(date, time)
 
     houses = get_houses(
@@ -75,11 +78,11 @@ def build_rasi_chart(
         house_occupants,
     )
 
-    return {
-        "houses": houses,
-        "house_lords": house_lords,
-        "house_lord_positions": house_lord_positions,
-        "house_occupants": house_occupants,
-        "conjunctions": conjunctions,
-        "planets": chart_planets,
-    }
+    pipeline.add("houses", houses)
+    pipeline.add("house_lords", house_lords)
+    pipeline.add("house_lord_positions", house_lord_positions)
+    pipeline.add("house_occupants", house_occupants)
+    pipeline.add("conjunctions", conjunctions)
+    pipeline.add("planets", chart_planets)
+
+    return pipeline.build()
