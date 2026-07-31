@@ -1,6 +1,7 @@
 from services.planet_service import get_all_planets
 from services.house_service import get_houses
 from services.house_lord_service import get_house_lords
+from services.house_lord_position_service import get_house_lord_positions
 from domain.chart import ChartPlanet
 
 
@@ -59,8 +60,14 @@ def build_rasi_chart(
             )
         )
 
+    house_lord_positions = get_house_lord_positions(
+        house_lords,
+        chart_planets,
+    )
+
     return {
         "houses": houses,
         "house_lords": house_lords,
+        "house_lord_positions": house_lord_positions,
         "planets": chart_planets,
     }
