@@ -3,6 +3,7 @@ from services.house_service import get_houses
 from services.house_lord_service import get_house_lords
 from services.house_lord_position_service import get_house_lord_positions
 from services.house_occupants_service import get_house_occupants
+from services.conjunction_service import get_conjunctions
 from domain.chart import ChartPlanet
 
 
@@ -70,10 +71,15 @@ def build_rasi_chart(
         chart_planets,
     )
 
+    conjunctions = get_conjunctions(
+        house_occupants,
+    )
+
     return {
         "houses": houses,
         "house_lords": house_lords,
         "house_lord_positions": house_lord_positions,
         "house_occupants": house_occupants,
+        "conjunctions": conjunctions,
         "planets": chart_planets,
     }
