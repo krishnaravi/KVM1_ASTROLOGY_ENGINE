@@ -1,6 +1,5 @@
 """
 Graha Drishti Engine
-
 Parashari Graha Aspects
 """
 
@@ -17,6 +16,7 @@ def get_graha_drishti(chart_planets):
 
         aspects = []
 
+        # Sun, Moon, Mercury, Venus
         if planet.name in [
             "Sun",
             "Moon",
@@ -32,14 +32,91 @@ def get_graha_drishti(chart_planets):
                 "type": "7th"
             })
 
+        # Mars
+        elif planet.name == "Mars":
+
+            aspects.extend([
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        3,
+                    ),
+                    "type": "4th"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        6,
+                    ),
+                    "type": "7th"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        7,
+                    ),
+                    "type": "8th"
+                }
+            ])
+
+        # Jupiter
+        elif planet.name == "Jupiter":
+
+            aspects.extend([
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        4,
+                    ),
+                    "type": "5th"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        6,
+                    ),
+                    "type": "7th"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        8,
+                    ),
+                    "type": "9th"
+                }
+            ])
+
+        # Saturn
+        elif planet.name == "Saturn":
+
+            aspects.extend([
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        2,
+                    ),
+                    "type": "3rd"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        6,
+                    ),
+                    "type": "7th"
+                },
+                {
+                    "house": aspect_house(
+                        planet.house,
+                        9,
+                    ),
+                    "type": "10th"
+                }
+            ])
+
         results.append({
-
             "planet": planet.name,
-
             "from_house": planet.house,
-
             "aspects": aspects
-
         })
 
     return results

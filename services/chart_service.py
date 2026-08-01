@@ -5,12 +5,16 @@ from services.house_lord_position_service import get_house_lord_positions
 from services.house_occupants_service import get_house_occupants
 from services.conjunction_service import get_conjunctions
 from services.chart_pipeline import ChartPipeline
-from domain.chart import ChartPlanet
 from services.drishti.graha_drishti import get_graha_drishti
+from services.yogas.yoga_engine import get_yogas
+
+from domain.chart import ChartPlanet
 
 
 def get_planet_house(planet_longitude, houses):
+
     for house in houses:
+
         start = house["longitude"]
 
         if house["house"] == 12:
@@ -19,6 +23,7 @@ def get_planet_house(planet_longitude, houses):
             end = houses[house["house"]]["longitude"]
 
         lon = planet_longitude
+
         if lon < start:
             lon += 360
 
@@ -34,9 +39,13 @@ def build_rasi_chart(
     latitude: float,
     longitude: float,
 ):
+
     pipeline = ChartPipeline()
 
-    planets = get_all_planets(date, time)
+    planets = get_all_planets(
+        date,
+        time,
+    )
 
     houses = get_houses(
         date,
@@ -45,12 +54,16 @@ def build_rasi_chart(
         longitude,
     )
 
-    house_lords = get_house_lords(houses)
+    house_lords = get_house_lords(
+        houses,
+    )
 
     chart_planets = []
 
     for planet in planets:
+
         chart_planets.append(
+
             ChartPlanet(
                 name=planet.name,
                 longitude=planet.longitude,
@@ -64,6 +77,7 @@ def build_rasi_chart(
                 nakshatra_lord=planet.nakshatra_lord,
                 pada=planet.pada,
             )
+
         )
 
     house_lord_positions = get_house_lord_positions(
@@ -78,15 +92,63 @@ def build_rasi_chart(
     conjunctions = get_conjunctions(
         house_occupants,
     )
+
     graha_drishti = get_graha_drishti(
-    chart_planets,
-)
-    pipeline.add("houses", houses)
-    pipeline.add("house_lords", house_lords)
-    pipeline.add("house_lord_positions", house_lord_positions)
-    pipeline.add("house_occupants", house_occupants)
-    pipeline.add("conjunctions", conjunctions)
-    pipeline.add("graha_drishti", graha_drishti)
-    pipeline.add("planets", chart_planets)
+        chart_planets,
+    )
+
+    chart = {
+        "houses": houses,
+        "house_lords": house_lords,
+        "house_lord_positions": house_lord_positions,
+        "house_occupants": house_occupants,
+        "conjunctions": conjunctions,
+        "graha_drishti": graha_drishti,
+        "planets": chart_planets,
+    }
+
+    yogas = get_yogas(
+        chart,
+    )
+
+    pipeline.add(
+        "houses",
+        houses,
+    )
+
+    pipeline.add(
+        "house_lords",
+        house_lords,
+    )
+
+    pipeline.add(
+        "house_lord_positions",
+        house_lord_positions,
+    )
+
+    pipeline.add(
+        "house_occupants",
+        house_occupants,
+    )
+
+    pipeline.add(
+        "conjunctions",
+        conjunctions,
+    )
+
+    pipeline.add(
+        "graha_drishti",
+        graha_drishti,
+    )
+
+    pipeline.add(
+        "yogas",
+        yogas,
+    )
+
+    pipeline.add(
+        "planets",
+        chart_planets,
+    )
 
     return pipeline.build()
