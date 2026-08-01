@@ -6,6 +6,7 @@ from services.house_occupants_service import get_house_occupants
 from services.conjunction_service import get_conjunctions
 from services.chart_pipeline import ChartPipeline
 from domain.chart import ChartPlanet
+from services.drishti.graha_drishti import get_graha_drishti
 
 
 def get_planet_house(planet_longitude, houses):
@@ -77,12 +78,15 @@ def build_rasi_chart(
     conjunctions = get_conjunctions(
         house_occupants,
     )
-
+    graha_drishti = get_graha_drishti(
+    chart_planets,
+)
     pipeline.add("houses", houses)
     pipeline.add("house_lords", house_lords)
     pipeline.add("house_lord_positions", house_lord_positions)
     pipeline.add("house_occupants", house_occupants)
     pipeline.add("conjunctions", conjunctions)
+    pipeline.add("graha_drishti", graha_drishti)
     pipeline.add("planets", chart_planets)
 
     return pipeline.build()
