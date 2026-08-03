@@ -1,3 +1,5 @@
+from domain.chart import ChartPlanet
+
 from services.planet_service import get_all_planets
 from services.house_service import get_houses
 from services.house_lord_service import get_house_lords
@@ -7,20 +9,21 @@ from services.conjunction_service import get_conjunctions
 from services.chart_pipeline import ChartPipeline
 from services.drishti.graha_drishti import get_graha_drishti
 from services.yogas.yoga_engine import get_yogas
-
-from domain.chart import ChartPlanet
+from services.strengths.strength_engine import get_strengths
+from services.score_engine import build_scores
+from services.analyzers.planet_analyzer import analyze
 
 
 def get_planet_house(planet_longitude, houses):
 
-    for house in houses:
+    for i, house in enumerate(houses):
 
         start = house["longitude"]
 
-        if house["house"] == 12:
+        if i == len(houses) - 1:
             end = houses[0]["longitude"] + 360
         else:
-            end = houses[house["house"]]["longitude"]
+            end = houses[i + 1]["longitude"]
 
         lon = planet_longitude
 
@@ -42,7 +45,11 @@ def build_rasi_chart(
 
     pipeline = ChartPipeline()
 
-    planets = get_all_planets(
+    # --------------------------------------------------
+    # Raw Planet Data
+    # --------------------------------------------------
+
+    raw_planets = get_all_planets(
         date,
         time,
     )
@@ -54,31 +61,46 @@ def build_rasi_chart(
         longitude,
     )
 
-    house_lords = get_house_lords(
-        houses,
-    )
+    # --------------------------------------------------
+    # Convert Planet -> ChartPlanet
+    # --------------------------------------------------
 
     chart_planets = []
 
-    for planet in planets:
+    for p in raw_planets:
 
         chart_planets.append(
 
             ChartPlanet(
-                name=planet.name,
-                longitude=planet.longitude,
-                sign=planet.sign,
-                degree_in_sign=planet.degree_in_sign,
+
+                name=p.name,
+
+                longitude=p.longitude,
+                latitude=p.latitude,
+                speed=p.speed,
+                retrograde=p.retrograde,
+
+                sign=p.sign,
+                degree_in_sign=p.degree_in_sign,
+
                 house=get_planet_house(
-                    planet.longitude,
+                    p.longitude,
                     houses,
                 ),
-                nakshatra=planet.nakshatra,
-                nakshatra_lord=planet.nakshatra_lord,
-                pada=planet.pada,
+
+                nakshatra=p.nakshatra,
+                nakshatra_lord=p.nakshatra_lord,
+                pada=p.pada,
+
             )
 
         )
+
+    # --------------------------------------------------
+    # House Data
+    # --------------------------------------------------
+
+    house_lords = get_house_lords(houses)
 
     house_lord_positions = get_house_lord_positions(
         house_lords,
@@ -97,29 +119,72 @@ def build_rasi_chart(
         chart_planets,
     )
 
+    # --------------------------------------------------
+    # Chart Object
+    # --------------------------------------------------
+
     chart = {
+
         "houses": houses,
+
         "house_lords": house_lords,
+
         "house_lord_positions": house_lord_positions,
+
         "house_occupants": house_occupants,
+
         "conjunctions": conjunctions,
+
         "graha_drishti": graha_drishti,
+
         "planets": chart_planets,
+
     }
 
-    yogas = get_yogas(
-        chart,
+    # --------------------------------------------------
+    # Yogas
+    # --------------------------------------------------
+
+    yogas = get_yogas(chart)
+
+    chart["yogas"] = yogas
+
+    # --------------------------------------------------
+    # Planet Strengths
+    # --------------------------------------------------
+
+    strengths = get_strengths(chart)
+
+    chart["planet_strengths"] = strengths
+
+    # --------------------------------------------------
+    # Planet Scores
+    # --------------------------------------------------
+
+    planet_scores = build_scores(strengths)
+
+    chart["planet_scores"] = planet_scores
+
+    # --------------------------------------------------
+    # Planet Analyzer
+    # --------------------------------------------------
+
+    chart_planets = analyze(
+        chart_planets,
+        strengths,
+        planet_scores,
     )
 
-    pipeline.add(
-        "houses",
-        houses,
-    )
+    # IMPORTANT
+    chart["planets"] = chart_planets
 
-    pipeline.add(
-        "house_lords",
-        house_lords,
-    )
+    # --------------------------------------------------
+    # Pipeline
+    # --------------------------------------------------
+
+    pipeline.add("houses", houses)
+
+    pipeline.add("house_lords", house_lords)
 
     pipeline.add(
         "house_lord_positions",
@@ -144,6 +209,16 @@ def build_rasi_chart(
     pipeline.add(
         "yogas",
         yogas,
+    )
+
+    pipeline.add(
+        "planet_strengths",
+        strengths,
+    )
+
+    pipeline.add(
+        "planet_scores",
+        planet_scores,
     )
 
     pipeline.add(
