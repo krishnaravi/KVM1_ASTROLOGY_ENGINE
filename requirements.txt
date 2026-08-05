@@ -1,0 +1,12 @@
+# KVM1 Astrology Engine — runtime dependencies
+# Requires Python 3.12+
+# Install:  pip install -r requirements.txt
+
+fastapi==0.140.7
+uvicorn==0.51.0
+pydantic==2.13.4
+pyswisseph==2.10.3.2
+
+# Transitive (resolved automatically from the above; listed for reference):
+#   annotated-types, anyio, click, colorama, h11, idna,
+#   pydantic_core, starlette, typing_extensions, typing-inspection

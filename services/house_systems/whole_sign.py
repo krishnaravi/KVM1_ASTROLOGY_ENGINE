@@ -1,19 +1,6 @@
 from typing import List
 
-ZODIAC_SIGNS = [
-    "மேஷம்",
-    "ரிஷபம்",
-    "மிதுனம்",
-    "கடகம்",
-    "சிம்மம்",
-    "கன்னி",
-    "துலாம்",
-    "விருச்சிகம்",
-    "தனுசு",
-    "மகரம்",
-    "கும்பம்",
-    "மீனம்",
-]
+from core.constants import ZODIAC_SIGNS
 
 
 def calculate(lagna_longitude: float) -> List[dict]:

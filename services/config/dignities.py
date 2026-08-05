@@ -208,22 +208,6 @@ NEUTRAL_SIGNS = {
     ],
 }
 
-COMBUSTION_LIMITS = {
-
-    "Moon": 12,
-
-    "Mars": 17,
-
-    "Mercury": 14,
-
-    "Jupiter": 11,
-
-    "Venus": 10,
-
-    "Saturn": 15,
-
-}
-
 RETROGRADE_PLANETS = [
 
     "Mercury",

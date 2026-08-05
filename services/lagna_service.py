@@ -1,13 +1,11 @@
 import swisseph as swe
 from datetime import datetime
 
+from core.constants import ZODIAC_SIGNS
+
 swe.set_sid_mode(swe.SIDM_LAHIRI)
 
-ZODIAC_SIGNS = [
-    "மேஷம்", "ரிஷபம்", "மிதுனம்", "கடகம்",
-    "சிம்மம்", "கன்னி", "துலாம்", "விருச்சிகம்",
-    "தனுசு", "மகரம்", "கும்பம்", "மீனம்"
-]
+
 def get_lagna(date_str: str, time_str: str, latitude: float, longitude: float):
     dt = datetime.strptime(
         f"{date_str} {time_str}",

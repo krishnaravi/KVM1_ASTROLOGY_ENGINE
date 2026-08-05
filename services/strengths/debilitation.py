@@ -4,16 +4,6 @@ Debilitation Strength
 
 from services.config.dignities import DEBILITATION_SIGNS
 
-DEBILITATION_SIGNS = {
-    "Sun": "துலாம்",
-    "Moon": "விருச்சிகம்",
-    "Mars": "கடகம்",
-    "Mercury": "மீனம்",
-    "Jupiter": "மகரம்",
-    "Venus": "கன்னி",
-    "Saturn": "மேஷம்",
-}
-
 
 def check(chart):
 

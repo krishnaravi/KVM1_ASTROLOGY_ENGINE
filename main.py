@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from core.constants import ZODIAC_SIGNS
 from routers.lagna import router as lagna_router
 from routers.health import router as health_router
 from routers.planet import router as planet_router
@@ -57,12 +58,9 @@ def calculate_horoscope(date_str: str, time_str: str):
         moon_res, _ = swe.calc_ut(julian_day, swe.MOON, swe.FLG_SIDEREAL)
         moon_deg = moon_res[0]
         
-        # 4. ராசிப் பெயர்களின் பட்டியல்
-        zodiac_signs = ["மேஷம்", "ரிஷபம்", "மிதுனம்", "கடகம்", "சிம்மம்", "கன்னி", 
-                        "துலாம்", "விருச்சிகம்", "தனுசு", "மகரம்", "கும்பம்", "மீனம்"]
-        
-        sun_sign = zodiac_signs[int(sun_deg // 30)]
-        moon_sign = zodiac_signs[int(moon_deg // 30)]
+        # 4. ராசிப் பெயர்களின் பட்டியல் (core.constants இலிருந்து)
+        sun_sign = ZODIAC_SIGNS[int(sun_deg // 30)]
+        moon_sign = ZODIAC_SIGNS[int(moon_deg // 30)]
         
         # விடைகளை வேர்ட்பிரஸிற்கு JSON ஆக அனுப்புதல்
         return {
