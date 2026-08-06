@@ -1,10 +1,3 @@
-from dataclasses import dataclass
+from domain.models.birth_data import BirthData
 
-
-@dataclass
-class BirthData:
-    date: str
-    time: str
-    latitude: float
-    longitude: float
-    timezone: float = 5.5
+__all__ = ["BirthData"]
