@@ -11,6 +11,7 @@ from core.interfaces.swisseph_interface import ISwissephService
 from core.interfaces.engine_interface import IAstrologyEngine
 from core.interfaces.rule_interface import IRule, RuleResult, IRuleEngine
 from core.interfaces.audit_interface import IAuditLogger
+from core.interfaces.pipeline_interface import IPipelineStage
 
 __all__ = [
     "IGeocoderProvider",
@@ -23,4 +24,5 @@ __all__ = [
     "RuleResult",
     "IRuleEngine",
     "IAuditLogger",
+    "IPipelineStage",
 ]

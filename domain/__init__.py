@@ -10,6 +10,7 @@ from domain.models.time_context import JulianDayContext
 from domain.models.ephemeris_context import EphemerisContext
 from domain.models.astronomical_state import AstronomicalState
 from domain.models.calculation_context import CalculationContext
+from domain.models.stage_metrics import PipelineStageMetrics
 from domain.models.audit_log import CalculationAuditLog
 from domain.planet import Planet
 from domain.chart import ChartPlanet
@@ -31,6 +32,7 @@ __all__ = [
     "EphemerisContext",
     "AstronomicalState",
     "CalculationContext",
+    "PipelineStageMetrics",
     "CalculationAuditLog",
     "Planet",
     "ChartPlanet",

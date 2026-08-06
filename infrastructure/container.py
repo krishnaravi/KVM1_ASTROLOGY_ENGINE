@@ -84,3 +84,30 @@ class Container:
 
 # Global Container Instance for Application Bootstrapping
 container: Container = Container()
+
+
+def bootstrap_container(c: Optional[Container] = None) -> Container:
+    """
+    Registers default production/development implementation services in DI Container.
+    """
+    target = c or container
+
+    from core.interfaces.geocoder_interface import IGeocoderProvider
+    from core.interfaces.timezone_interface import ITimezoneService
+    from core.interfaces.julian_day_interface import IJulianDayService
+    from core.interfaces.swisseph_interface import ISwissephService
+    from core.interfaces.audit_interface import IAuditLogger
+
+    from infrastructure.geocoding.offline_geocoder import OfflineGeocoder
+    from services.timezone_service import TimezoneService
+    from services.julian_day_service import JulianDayService
+    from services.swisseph_service import SwissephService
+    from services.audit_logging_service import AuditLoggingService
+
+    target.register_singleton(IGeocoderProvider, OfflineGeocoder())
+    target.register_singleton(ITimezoneService, TimezoneService())
+    target.register_singleton(IJulianDayService, JulianDayService())
+    target.register_singleton(ISwissephService, SwissephService())
+    target.register_singleton(IAuditLogger, AuditLoggingService())
+
+    return target
