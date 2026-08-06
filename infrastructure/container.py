@@ -93,19 +93,25 @@ def bootstrap_container(c: Optional[Container] = None) -> Container:
     target = c or container
 
     from core.interfaces.geocoder_interface import IGeocoderProvider
+    from core.interfaces.cache_interface import ICacheProvider
     from core.interfaces.timezone_interface import ITimezoneService
     from core.interfaces.julian_day_interface import IJulianDayService
     from core.interfaces.swisseph_interface import ISwissephService
     from core.interfaces.audit_interface import IAuditLogger
 
-    from infrastructure.geocoding.offline_geocoder import OfflineGeocoder
+    from infrastructure.geocoding.composite_geocoder import CompositeGeocoder
+    from infrastructure.cache.two_level_cache import TwoLevelCache
     from services.timezone_service import TimezoneService
     from services.julian_day_service import JulianDayService
     from services.swisseph_service import SwissephService
     from services.audit_logging_service import AuditLoggingService
 
-    target.register_singleton(IGeocoderProvider, OfflineGeocoder())
-    target.register_singleton(ITimezoneService, TimezoneService())
+    cache_instance = TwoLevelCache()
+    geocoder_instance = CompositeGeocoder()
+
+    target.register_singleton(ICacheProvider, cache_instance)
+    target.register_singleton(IGeocoderProvider, geocoder_instance)
+    target.register_singleton(ITimezoneService, TimezoneService(cache=cache_instance))
     target.register_singleton(IJulianDayService, JulianDayService())
     target.register_singleton(ISwissephService, SwissephService())
     target.register_singleton(IAuditLogger, AuditLoggingService())
