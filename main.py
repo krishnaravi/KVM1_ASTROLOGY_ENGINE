@@ -18,7 +18,8 @@ def root():
     }
 from fastapi.middleware.cors import CORSMiddleware
 import swisseph as swe
-from datetime import datetime
+
+from core.swisseph_service import get_julian_day
 
 
 
@@ -36,19 +37,16 @@ app.include_router(planet_router)
 app.include_router(house_router)
 app.include_router(chart_router)
 
-# லஹிரி அயனாம்ச முறையைத் தேர்ந்தெடுத்தல்
-swe.set_sid_mode(swe.SIDM_LAHIRI)
+# லஹிரி அயனாம்ச முறை core.swisseph_service இறக்குமதியின்போது
+# ஒரே முறை அமைக்கப்படுகிறது.
 
 @app.get("/calculate-horoscope")
 def calculate_horoscope(date_str: str, time_str: str):
     try:
-        # 1. வேர்ட்பிரஸ் அனுப்பும் தேதியையும் நேரத்தையும் பிரித்தல் (Format: YYYY-MM-DD, HH:MM)
-        dt = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-        
-        # 2. சுவிஸ் எபிமெரிஸிற்கான ஜூலியன் நாளாக (Julian Day) மாற்றுதல்
-        # (இந்திய நேரப்படி கணிக்க எளிமைக்காக UTC மாற்றாமல் நேரடியாக மணிநேரம் கணக்கிடப்பட்டுள்ளது)
-        julian_day = swe.julday(dt.year, dt.month, dt.day, dt.hour + dt.minute/60.0)
-        
+        # 1-2. தேதி/நேரத்தை ஜூலியன் நாளாக மாற்றுதல்
+        # (core.swisseph_service இல் உள்ள ஒரே நியமன செயலி)
+        julian_day = get_julian_day(date_str, time_str)
+
         # 3. சூரியன் மற்றும் சந்திரனின் நிலைகளை 'நிராயண' (Sidereal) இந்திய முறையில் கணக்கிடுதல்
         # சூரியன் (SE_SUN = 0)
         sun_res, _ = swe.calc_ut(julian_day, swe.SUN, swe.FLG_SIDEREAL)

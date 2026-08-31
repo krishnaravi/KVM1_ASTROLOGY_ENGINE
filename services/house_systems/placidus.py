@@ -1,7 +1,7 @@
 import swisseph as swe
-from datetime import datetime
 
 from core.constants import ZODIAC_SIGNS
+from core.swisseph_service import get_julian_day
 
 
 def calculate(
@@ -15,19 +15,7 @@ def calculate(
     using Swiss Ephemeris (Sidereal Lahiri).
     """
 
-    dt = datetime.strptime(
-        f"{date_str} {time_str}",
-        "%Y-%m-%d %H:%M"
-    )
-
-    jd = swe.julday(
-        dt.year,
-        dt.month,
-        dt.day,
-        dt.hour + dt.minute / 60.0
-    )
-
-    swe.set_sid_mode(swe.SIDM_LAHIRI)
+    jd = get_julian_day(date_str, time_str)
 
     cusps, ascmc = swe.houses_ex(
         jd,
