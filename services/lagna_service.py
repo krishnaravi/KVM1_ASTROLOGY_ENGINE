@@ -1,25 +1,11 @@
 import swisseph as swe
-from datetime import datetime
 
-swe.set_sid_mode(swe.SIDM_LAHIRI)
+from core.constants import ZODIAC_SIGNS
+from core.swisseph_service import get_julian_day
 
-ZODIAC_SIGNS = [
-    "மேஷம்", "ரிஷபம்", "மிதுனம்", "கடகம்",
-    "சிம்மம்", "கன்னி", "துலாம்", "விருச்சிகம்",
-    "தனுசு", "மகரம்", "கும்பம்", "மீனம்"
-]
+
 def get_lagna(date_str: str, time_str: str, latitude: float, longitude: float):
-    dt = datetime.strptime(
-        f"{date_str} {time_str}",
-        "%Y-%m-%d %H:%M"
-    )
-
-    jd = swe.julday(
-        dt.year,
-        dt.month,
-        dt.day,
-        dt.hour + dt.minute / 60.0
-    )
+    jd = get_julian_day(date_str, time_str)
 
     cusps, ascmc = swe.houses_ex(
         jd,

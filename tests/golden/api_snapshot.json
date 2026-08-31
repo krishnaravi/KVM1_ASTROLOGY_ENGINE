@@ -1,0 +1,6392 @@
+{
+  "openapi": {
+    "components": {
+      "schemas": {
+        "HTTPValidationError": {
+          "properties": {
+            "detail": {
+              "items": {
+                "$ref": "#/components/schemas/ValidationError"
+              },
+              "title": "Detail",
+              "type": "array"
+            }
+          },
+          "title": "HTTPValidationError",
+          "type": "object"
+        },
+        "ValidationError": {
+          "properties": {
+            "ctx": {
+              "title": "Context",
+              "type": "object"
+            },
+            "input": {
+              "title": "Input"
+            },
+            "loc": {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "integer"
+                  }
+                ]
+              },
+              "title": "Location",
+              "type": "array"
+            },
+            "msg": {
+              "title": "Message",
+              "type": "string"
+            },
+            "type": {
+              "title": "Error Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "loc",
+            "msg",
+            "type"
+          ],
+          "title": "ValidationError",
+          "type": "object"
+        }
+      }
+    },
+    "info": {
+      "title": "KVM1 Astrology Engine",
+      "version": "1.0.0"
+    },
+    "openapi": "3.1.0",
+    "paths": {
+      "/": {
+        "get": {
+          "operationId": "root__get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Root"
+        }
+      },
+      "/api/houses": {
+        "get": {
+          "operationId": "houses_api_houses_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "date",
+              "required": true,
+              "schema": {
+                "title": "Date",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "time",
+              "required": true,
+              "schema": {
+                "title": "Time",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "latitude",
+              "required": true,
+              "schema": {
+                "title": "Latitude",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "longitude",
+              "required": true,
+              "schema": {
+                "title": "Longitude",
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Houses",
+          "tags": [
+            "Houses"
+          ]
+        }
+      },
+      "/api/lagna": {
+        "get": {
+          "operationId": "lagna_api_lagna_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "date",
+              "required": true,
+              "schema": {
+                "title": "Date",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "time",
+              "required": true,
+              "schema": {
+                "title": "Time",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "latitude",
+              "required": true,
+              "schema": {
+                "title": "Latitude",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "longitude",
+              "required": true,
+              "schema": {
+                "title": "Longitude",
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Lagna",
+          "tags": [
+            "Lagna"
+          ]
+        }
+      },
+      "/api/planet-positions": {
+        "get": {
+          "operationId": "planets_positions_api_planet_positions_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "date",
+              "required": true,
+              "schema": {
+                "title": "Date",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "time",
+              "required": true,
+              "schema": {
+                "title": "Time",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Planets Positions",
+          "tags": [
+            "Planets"
+          ]
+        }
+      },
+      "/api/rasi-chart": {
+        "get": {
+          "operationId": "rasi_chart_api_rasi_chart_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "date",
+              "required": true,
+              "schema": {
+                "title": "Date",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "time",
+              "required": true,
+              "schema": {
+                "title": "Time",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "latitude",
+              "required": true,
+              "schema": {
+                "title": "Latitude",
+                "type": "number"
+              }
+            },
+            {
+              "in": "query",
+              "name": "longitude",
+              "required": true,
+              "schema": {
+                "title": "Longitude",
+                "type": "number"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Rasi Chart",
+          "tags": [
+            "Chart"
+          ]
+        }
+      },
+      "/calculate-horoscope": {
+        "get": {
+          "operationId": "calculate_horoscope_calculate_horoscope_get",
+          "parameters": [
+            {
+              "in": "query",
+              "name": "date_str",
+              "required": true,
+              "schema": {
+                "title": "Date Str",
+                "type": "string"
+              }
+            },
+            {
+              "in": "query",
+              "name": "time_str",
+              "required": true,
+              "schema": {
+                "title": "Time Str",
+                "type": "string"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            },
+            "422": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/HTTPValidationError"
+                  }
+                }
+              },
+              "description": "Validation Error"
+            }
+          },
+          "summary": "Calculate Horoscope"
+        }
+      },
+      "/health": {
+        "get": {
+          "operationId": "health_health_get",
+          "responses": {
+            "200": {
+              "content": {
+                "application/json": {
+                  "schema": {}
+                }
+              },
+              "description": "Successful Response"
+            }
+          },
+          "summary": "Health"
+        }
+      }
+    }
+  },
+  "responses": {
+    "1968-08-25T08:05@59.9139,10.7522": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 16.3319,
+            "house": 1,
+            "longitude": 166.3319,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 9.473809,
+            "house": 2,
+            "longitude": 189.473809,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 10.464944,
+            "house": 3,
+            "longitude": 220.464944,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 20.998621,
+            "house": 4,
+            "longitude": 260.998621,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 28.501336,
+            "house": 5,
+            "longitude": 298.501336,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 26.160729,
+            "house": 6,
+            "longitude": 326.160729,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 16.3319,
+            "house": 7,
+            "longitude": 346.3319,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 9.473809,
+            "house": 8,
+            "longitude": 9.473809,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 10.464944,
+            "house": 9,
+            "longitude": 40.464944,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 20.998621,
+            "house": 10,
+            "longitude": 80.998621,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 28.501336,
+            "house": 11,
+            "longitude": 118.501336,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 26.160729,
+            "house": 12,
+            "longitude": 146.160729,
+            "sign": "சிம்மம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 16.3319,
+          "longitude": 166.3319,
+          "name": "Lagna",
+          "sign": "கன்னி"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "1968-08-25",
+        "moon_longitude": 145.41,
+        "moon_sign": "சிம்மம்",
+        "status": "success",
+        "sun_longitude": 128.75,
+        "sun_sign": "சிம்மம்",
+        "time": "08:05"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 8.753715,
+            "latitude": 0.000156,
+            "longitude": 128.753715,
+            "nakshatra": "மகம்",
+            "nakshatra_lord": "கேது",
+            "name": "Sun",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 0.965234
+          },
+          {
+            "degree_in_sign": 25.413639,
+            "latitude": 1.874684,
+            "longitude": 145.413639,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 13.552905
+          },
+          {
+            "degree_in_sign": 19.19978,
+            "latitude": 1.123433,
+            "longitude": 109.19978,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Mars",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.638909
+          },
+          {
+            "degree_in_sign": 24.922553,
+            "latitude": 0.748895,
+            "longitude": 144.922553,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mercury",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 1.662445
+          },
+          {
+            "degree_in_sign": 19.797453,
+            "latitude": 1.002238,
+            "longitude": 139.797453,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 0.214465
+          },
+          {
+            "degree_in_sign": 26.809022,
+            "latitude": 1.321973,
+            "longitude": 146.809022,
+            "nakshatra": "உத்திரம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 1.23112
+          },
+          {
+            "degree_in_sign": 1.848024,
+            "latitude": -2.667716,
+            "longitude": 1.848024,
+            "nakshatra": "அசுவினி",
+            "nakshatra_lord": "கேது",
+            "name": "Saturn",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.031069
+          },
+          {
+            "degree_in_sign": 18.007779,
+            "latitude": 0.0,
+            "longitude": 348.007779,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மீனம்",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 18.007779,
+            "latitude": 0.0,
+            "longitude": 168.007779,
+            "nakshatra": "ஹஸ்தம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 4,
+            "house": 11,
+            "planets": [
+              "Sun",
+              "Moon",
+              "Mercury",
+              "Jupiter"
+            ]
+          },
+          {
+            "count": 3,
+            "house": 12,
+            "planets": [
+              "Venus",
+              "Saturn",
+              "Rahu"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "7th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "7th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "4th"
+              },
+              {
+                "house": 4,
+                "type": "7th"
+              },
+              {
+                "house": 5,
+                "type": "8th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "7th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 3,
+                "type": "5th"
+              },
+              {
+                "house": 5,
+                "type": "7th"
+              },
+              {
+                "house": 7,
+                "type": "9th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "7th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 2,
+                "type": "3rd"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 9,
+                "type": "10th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 12,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 1,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "சிம்மம்",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 3,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "கடகம்",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 5,
+            "lord": "Saturn",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 6,
+            "lord": "Saturn",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "கடகம்",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 9,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "சிம்மம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Moon",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Sun",
+            "lord_house": 11,
+            "lord_sign": "சிம்மம்",
+            "sign": "சிம்மம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 3,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 5,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 6,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 9,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": [
+              "Ketu"
+            ]
+          },
+          {
+            "house": 2,
+            "occupants": []
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": []
+          },
+          {
+            "house": 6,
+            "occupants": []
+          },
+          {
+            "house": 7,
+            "occupants": []
+          },
+          {
+            "house": 8,
+            "occupants": []
+          },
+          {
+            "house": 9,
+            "occupants": []
+          },
+          {
+            "house": 10,
+            "occupants": [
+              "Mars"
+            ]
+          },
+          {
+            "house": 11,
+            "occupants": [
+              "Sun",
+              "Moon",
+              "Mercury",
+              "Jupiter"
+            ]
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Venus",
+              "Saturn",
+              "Rahu"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 16.3319,
+            "house": 1,
+            "longitude": 166.3319,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 9.473809,
+            "house": 2,
+            "longitude": 189.473809,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 10.464944,
+            "house": 3,
+            "longitude": 220.464944,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 20.998621,
+            "house": 4,
+            "longitude": 260.998621,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 28.501336,
+            "house": 5,
+            "longitude": 298.501336,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 26.160729,
+            "house": 6,
+            "longitude": 326.160729,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 16.3319,
+            "house": 7,
+            "longitude": 346.3319,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 9.473809,
+            "house": 8,
+            "longitude": 9.473809,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 10.464944,
+            "house": 9,
+            "longitude": 40.464944,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 20.998621,
+            "house": 10,
+            "longitude": 80.998621,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 28.501336,
+            "house": 11,
+            "longitude": 118.501336,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 26.160729,
+            "house": 12,
+            "longitude": 146.160729,
+            "sign": "சிம்மம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 70,
+          "Mars": 70,
+          "Moon": 70,
+          "Rahu": 15,
+          "Saturn": 55,
+          "Sun": 90,
+          "Venus": 40
+        },
+        "planet_strengths": [
+          {
+            "planet": "Sun",
+            "reason": "Sun is in Moolatrikona (சிம்மம் 8.75°)",
+            "score": 90,
+            "strength": "Moolatrikona"
+          },
+          {
+            "planet": "Moon",
+            "reason": "Moon is in friend sign சிம்மம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in friend sign கடகம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in friend sign சிம்மம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in neutral sign மேஷம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in enemy sign சிம்மம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is retrograde (speed -0.0311)",
+            "score": 15,
+            "strength": "Retrograde"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.753715,
+            "dignity": "Moolatrikona",
+            "house": 11,
+            "latitude": 0.000156,
+            "longitude": 128.753715,
+            "nakshatra": "மகம்",
+            "nakshatra_lord": "கேது",
+            "name": "Sun",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 0.965234,
+            "strength_score": 90
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 25.413639,
+            "dignity": "Friend Sign",
+            "house": 11,
+            "latitude": 1.874684,
+            "longitude": 145.413639,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 13.552905,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 19.19978,
+            "dignity": "Friend Sign",
+            "house": 10,
+            "latitude": 1.123433,
+            "longitude": 109.19978,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Mars",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.638909,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 24.922553,
+            "dignity": "Normal",
+            "house": 11,
+            "latitude": 0.748895,
+            "longitude": 144.922553,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mercury",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 1.662445,
+            "strength_score": 0
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 19.797453,
+            "dignity": "Friend Sign",
+            "house": 11,
+            "latitude": 1.002238,
+            "longitude": 139.797453,
+            "nakshatra": "பூரம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 0.214465,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 26.809022,
+            "dignity": "Enemy Sign",
+            "house": 12,
+            "latitude": 1.321973,
+            "longitude": 146.809022,
+            "nakshatra": "உத்திரம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "சிம்மம்",
+            "speed": 1.23112,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 1.848024,
+            "dignity": "Neutral Sign",
+            "house": 12,
+            "latitude": -2.667716,
+            "longitude": 1.848024,
+            "nakshatra": "அசுவினி",
+            "nakshatra_lord": "கேது",
+            "name": "Saturn",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.031069,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 18.007779,
+            "dignity": "Normal",
+            "house": 12,
+            "latitude": 0.0,
+            "longitude": 348.007779,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மீனம்",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 18.007779,
+            "dignity": "Normal",
+            "house": 1,
+            "latitude": 0.0,
+            "longitude": 168.007779,
+            "nakshatra": "ஹஸ்தம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "found": true,
+            "house": 11,
+            "name": "Budha Aditya Yoga",
+            "reason": "Sun and Mercury are conjunct in House 11",
+            "strength": "Normal"
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 4) and Mercury (Lord of House 1) are together in House 11",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 7) and Mercury (Lord of House 1) are together in House 11",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Mercury (Lord of House 10) and Mercury (Lord of House 1) are together in House 11",
+            "score": 90
+          },
+          {
+            "name": "Harsha Yoga",
+            "reason": "Saturn (6th Lord) is placed in House 12",
+            "score": 85
+          }
+        ]
+      }
+    },
+    "1972-01-09T06:00@9.9312,76.2673": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 11.428171,
+            "house": 1,
+            "longitude": 341.428171,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 14.756688,
+            "house": 2,
+            "longitude": 14.756688,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 13.816245,
+            "house": 3,
+            "longitude": 43.816245,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 10.342583,
+            "house": 4,
+            "longitude": 70.342583,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 7.255364,
+            "house": 5,
+            "longitude": 97.255364,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 7.304951,
+            "house": 6,
+            "longitude": 127.304951,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 11.428171,
+            "house": 7,
+            "longitude": 161.428171,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 14.756688,
+            "house": 8,
+            "longitude": 194.756688,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 13.816245,
+            "house": 9,
+            "longitude": 223.816245,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 10.342583,
+            "house": 10,
+            "longitude": 250.342583,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 7.255364,
+            "house": 11,
+            "longitude": 277.255364,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 7.304951,
+            "house": 12,
+            "longitude": 307.304951,
+            "sign": "கும்பம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 11.428171,
+          "longitude": 341.428171,
+          "name": "Lagna",
+          "sign": "மீனம்"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "1972-01-09",
+        "moon_longitude": 182.05,
+        "moon_sign": "துலாம்",
+        "status": "success",
+        "sun_longitude": 264.6,
+        "sun_sign": "தனுசு",
+        "time": "06:00"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 24.600277,
+            "latitude": -0.000109,
+            "longitude": 264.600277,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Sun",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.019236
+          },
+          {
+            "degree_in_sign": 2.051387,
+            "latitude": -5.182476,
+            "longitude": 182.051387,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 11.866442
+          },
+          {
+            "degree_in_sign": 15.264683,
+            "latitude": 0.021605,
+            "longitude": 345.264683,
+            "nakshatra": "உத்திரட்டாதி",
+            "nakshatra_lord": "சனி",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.651629
+          },
+          {
+            "degree_in_sign": 3.209555,
+            "latitude": 0.793923,
+            "longitude": 243.209555,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.293782
+          },
+          {
+            "degree_in_sign": 0.691283,
+            "latitude": 0.388606,
+            "longitude": 240.691283,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Jupiter",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.217165
+          },
+          {
+            "degree_in_sign": 27.482053,
+            "latitude": -1.735589,
+            "longitude": 297.482053,
+            "nakshatra": "அவிட்டம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 1.229153
+          },
+          {
+            "degree_in_sign": 6.56571,
+            "latitude": -2.026321,
+            "longitude": 36.56571,
+            "nakshatra": "கார்த்திகை",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Saturn",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "ரிஷபம்",
+            "speed": -0.040493
+          },
+          {
+            "degree_in_sign": 12.726184,
+            "latitude": 0.0,
+            "longitude": 282.726184,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 12.726184,
+            "latitude": 0.0,
+            "longitude": 102.726184,
+            "nakshatra": "பூசம்",
+            "nakshatra_lord": "சனி",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 2,
+            "house": 9,
+            "planets": [
+              "Mercury",
+              "Jupiter"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 11,
+            "planets": [
+              "Venus",
+              "Rahu"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "7th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "7th"
+              }
+            ],
+            "from_house": 7,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 3,
+                "type": "4th"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 7,
+                "type": "8th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 3,
+                "type": "7th"
+              }
+            ],
+            "from_house": 9,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "5th"
+              },
+              {
+                "house": 3,
+                "type": "7th"
+              },
+              {
+                "house": 5,
+                "type": "9th"
+              }
+            ],
+            "from_house": 9,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "7th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "3rd"
+              },
+              {
+                "house": 8,
+                "type": "7th"
+              },
+              {
+                "house": 11,
+                "type": "10th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 11,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 5,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Jupiter",
+            "lord_house": 9,
+            "lord_sign": "தனுசு",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Mars",
+            "lord_house": 12,
+            "lord_sign": "மீனம்",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 3,
+            "lord": "Venus",
+            "lord_house": 11,
+            "lord_sign": "மகரம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "lord_house": 9,
+            "lord_sign": "தனுசு",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Moon",
+            "lord_house": 7,
+            "lord_sign": "துலாம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 6,
+            "lord": "Sun",
+            "lord_house": 10,
+            "lord_sign": "தனுசு",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 7,
+            "lord": "Mercury",
+            "lord_house": 9,
+            "lord_sign": "தனுசு",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 8,
+            "lord": "Venus",
+            "lord_house": 11,
+            "lord_sign": "மகரம்",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mars",
+            "lord_house": 12,
+            "lord_sign": "மீனம்",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "lord_house": 9,
+            "lord_sign": "தனுசு",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 11,
+            "lord": "Saturn",
+            "lord_house": 2,
+            "lord_sign": "ரிஷபம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 12,
+            "lord": "Saturn",
+            "lord_house": 2,
+            "lord_sign": "ரிஷபம்",
+            "sign": "கும்பம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 3,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 6,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 7,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 8,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 11,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 12,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": []
+          },
+          {
+            "house": 2,
+            "occupants": [
+              "Saturn"
+            ]
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": [
+              "Ketu"
+            ]
+          },
+          {
+            "house": 6,
+            "occupants": []
+          },
+          {
+            "house": 7,
+            "occupants": [
+              "Moon"
+            ]
+          },
+          {
+            "house": 8,
+            "occupants": []
+          },
+          {
+            "house": 9,
+            "occupants": [
+              "Mercury",
+              "Jupiter"
+            ]
+          },
+          {
+            "house": 10,
+            "occupants": [
+              "Sun"
+            ]
+          },
+          {
+            "house": 11,
+            "occupants": [
+              "Venus",
+              "Rahu"
+            ]
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Mars"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 11.428171,
+            "house": 1,
+            "longitude": 341.428171,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 14.756688,
+            "house": 2,
+            "longitude": 14.756688,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 13.816245,
+            "house": 3,
+            "longitude": 43.816245,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 10.342583,
+            "house": 4,
+            "longitude": 70.342583,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 7.255364,
+            "house": 5,
+            "longitude": 97.255364,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 7.304951,
+            "house": 6,
+            "longitude": 127.304951,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 11.428171,
+            "house": 7,
+            "longitude": 161.428171,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 14.756688,
+            "house": 8,
+            "longitude": 194.756688,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 13.816245,
+            "house": 9,
+            "longitude": 223.816245,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 10.342583,
+            "house": 10,
+            "longitude": 250.342583,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 7.255364,
+            "house": 11,
+            "longitude": 277.255364,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 7.304951,
+            "house": 12,
+            "longitude": 307.304951,
+            "sign": "கும்பம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 90,
+          "Mars": 70,
+          "Mercury": 55,
+          "Rahu": 15,
+          "Saturn": 70,
+          "Sun": 70,
+          "Venus": 70
+        },
+        "planet_strengths": [
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in Moolatrikona (தனுசு 0.69°)",
+            "score": 90,
+            "strength": "Moolatrikona"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in friend sign தனுசு",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in friend sign மீனம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in friend sign மகரம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in friend sign ரிஷபம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in neutral sign தனுசு",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is retrograde (speed -0.0405)",
+            "score": 15,
+            "strength": "Retrograde"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 24.600277,
+            "dignity": "Friend Sign",
+            "house": 10,
+            "latitude": -0.000109,
+            "longitude": 264.600277,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Sun",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.019236,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 2.051387,
+            "dignity": "Normal",
+            "house": 7,
+            "latitude": -5.182476,
+            "longitude": 182.051387,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 11.866442,
+            "strength_score": 0
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 15.264683,
+            "dignity": "Friend Sign",
+            "house": 12,
+            "latitude": 0.021605,
+            "longitude": 345.264683,
+            "nakshatra": "உத்திரட்டாதி",
+            "nakshatra_lord": "சனி",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.651629,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 3.209555,
+            "dignity": "Neutral Sign",
+            "house": 9,
+            "latitude": 0.793923,
+            "longitude": 243.209555,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.293782,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 0.691283,
+            "dignity": "Moolatrikona",
+            "house": 9,
+            "latitude": 0.388606,
+            "longitude": 240.691283,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Jupiter",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.217165,
+            "strength_score": 90
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 27.482053,
+            "dignity": "Friend Sign",
+            "house": 11,
+            "latitude": -1.735589,
+            "longitude": 297.482053,
+            "nakshatra": "அவிட்டம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 1.229153,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 6.56571,
+            "dignity": "Friend Sign",
+            "house": 2,
+            "latitude": -2.026321,
+            "longitude": 36.56571,
+            "nakshatra": "கார்த்திகை",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Saturn",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "ரிஷபம்",
+            "speed": -0.040493,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 12.726184,
+            "dignity": "Normal",
+            "house": 11,
+            "latitude": 0.0,
+            "longitude": 282.726184,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 12.726184,
+            "dignity": "Normal",
+            "house": 5,
+            "latitude": 0.0,
+            "longitude": 102.726184,
+            "nakshatra": "பூசம்",
+            "nakshatra_lord": "சனி",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "name": "Raja Yoga",
+            "reason": "Mercury (Lord of House 4) and Jupiter (Lord of House 1) are together in House 9",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Mercury (Lord of House 7) and Jupiter (Lord of House 1) are together in House 9",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 10) and Jupiter (Lord of House 1) are together in House 9",
+            "score": 90
+          }
+        ]
+      }
+    },
+    "1985-11-02T03:45@28.6139,77.209": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 19.590686,
+            "house": 1,
+            "longitude": 229.590686,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 21.142949,
+            "house": 2,
+            "longitude": 261.142949,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 25.962336,
+            "house": 3,
+            "longitude": 295.962336,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 0.705213,
+            "house": 4,
+            "longitude": 330.705213,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 1.227838,
+            "house": 5,
+            "longitude": 1.227838,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 26.850499,
+            "house": 6,
+            "longitude": 26.850499,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 19.590686,
+            "house": 7,
+            "longitude": 49.590686,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 21.142949,
+            "house": 8,
+            "longitude": 81.142949,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 25.962336,
+            "house": 9,
+            "longitude": 115.962336,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 0.705213,
+            "house": 10,
+            "longitude": 150.705213,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 1.227838,
+            "house": 11,
+            "longitude": 181.227838,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 26.850499,
+            "house": 12,
+            "longitude": 206.850499,
+            "sign": "துலாம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 19.590686,
+          "longitude": 229.590686,
+          "name": "Lagna",
+          "sign": "விருச்சிகம்"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "1985-11-02",
+        "moon_longitude": 63.96,
+        "moon_sign": "மிதுனம்",
+        "status": "success",
+        "sun_longitude": 196.01,
+        "sun_sign": "துலாம்",
+        "time": "03:45"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 16.009024,
+            "latitude": 0.000155,
+            "longitude": 196.009024,
+            "nakshatra": "சுவாதி",
+            "nakshatra_lord": "ராகு",
+            "name": "Sun",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 1.000764
+          },
+          {
+            "degree_in_sign": 3.957116,
+            "latitude": 3.968247,
+            "longitude": 63.957116,
+            "nakshatra": "மிருகசீரிடம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 12.009336
+          },
+          {
+            "degree_in_sign": 9.804028,
+            "latitude": 1.198251,
+            "longitude": 159.804028,
+            "nakshatra": "உத்திரம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.626374
+          },
+          {
+            "degree_in_sign": 8.176929,
+            "latitude": -2.57396,
+            "longitude": 218.176929,
+            "nakshatra": "அனுஷம்",
+            "nakshatra_lord": "சனி",
+            "name": "Mercury",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 1.237527
+          },
+          {
+            "degree_in_sign": 14.897848,
+            "latitude": -0.844119,
+            "longitude": 284.897848,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 0.093641
+          },
+          {
+            "degree_in_sign": 27.002326,
+            "latitude": 1.532408,
+            "longitude": 177.002326,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 1.248077
+          },
+          {
+            "degree_in_sign": 4.594006,
+            "latitude": 1.826323,
+            "longitude": 214.594006,
+            "nakshatra": "அனுஷம்",
+            "nakshatra_lord": "சனி",
+            "name": "Saturn",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.114846
+          },
+          {
+            "degree_in_sign": 15.333354,
+            "latitude": -0.0,
+            "longitude": 15.333354,
+            "nakshatra": "பரணி",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 15.333354,
+            "latitude": 0.0,
+            "longitude": 195.333354,
+            "nakshatra": "சுவாதி",
+            "nakshatra_lord": "ராகு",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 2,
+            "house": 10,
+            "planets": [
+              "Mars",
+              "Venus"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 11,
+            "planets": [
+              "Sun",
+              "Ketu"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 12,
+            "planets": [
+              "Mercury",
+              "Saturn"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "7th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "7th"
+              }
+            ],
+            "from_house": 7,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "4th"
+              },
+              {
+                "house": 4,
+                "type": "7th"
+              },
+              {
+                "house": 5,
+                "type": "8th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "7th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "5th"
+              },
+              {
+                "house": 8,
+                "type": "7th"
+              },
+              {
+                "house": 10,
+                "type": "9th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "7th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 2,
+                "type": "3rd"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 9,
+                "type": "10th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 5,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 11,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 2,
+            "lord": "Jupiter",
+            "lord_house": 2,
+            "lord_sign": "மகரம்",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 3,
+            "lord": "Saturn",
+            "lord_house": 12,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "lord_house": 2,
+            "lord_sign": "மகரம்",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 7,
+            "lord": "Venus",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mercury",
+            "lord_house": 12,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 9,
+            "lord": "Moon",
+            "lord_house": 7,
+            "lord_sign": "மிதுனம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "lord_house": 12,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 11,
+            "lord": "Venus",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 12,
+            "lord": "Venus",
+            "lord_house": 10,
+            "lord_sign": "கன்னி",
+            "sign": "துலாம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 2,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 3,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 7,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 9,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 11,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 12,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": []
+          },
+          {
+            "house": 2,
+            "occupants": [
+              "Jupiter"
+            ]
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": [
+              "Rahu"
+            ]
+          },
+          {
+            "house": 6,
+            "occupants": []
+          },
+          {
+            "house": 7,
+            "occupants": [
+              "Moon"
+            ]
+          },
+          {
+            "house": 8,
+            "occupants": []
+          },
+          {
+            "house": 9,
+            "occupants": []
+          },
+          {
+            "house": 10,
+            "occupants": [
+              "Mars",
+              "Venus"
+            ]
+          },
+          {
+            "house": 11,
+            "occupants": [
+              "Sun",
+              "Ketu"
+            ]
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Mercury",
+              "Saturn"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 19.590686,
+            "house": 1,
+            "longitude": 229.590686,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 21.142949,
+            "house": 2,
+            "longitude": 261.142949,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 25.962336,
+            "house": 3,
+            "longitude": 295.962336,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 0.705213,
+            "house": 4,
+            "longitude": 330.705213,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 1.227838,
+            "house": 5,
+            "longitude": 1.227838,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 26.850499,
+            "house": 6,
+            "longitude": 26.850499,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 19.590686,
+            "house": 7,
+            "longitude": 49.590686,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 21.142949,
+            "house": 8,
+            "longitude": 81.142949,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 25.962336,
+            "house": 9,
+            "longitude": 115.962336,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 0.705213,
+            "house": 10,
+            "longitude": 150.705213,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 1.227838,
+            "house": 11,
+            "longitude": 181.227838,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 26.850499,
+            "house": 12,
+            "longitude": 206.850499,
+            "sign": "துலாம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 55,
+          "Mars": 40,
+          "Mercury": 55,
+          "Moon": 70,
+          "Rahu": 15,
+          "Saturn": 55,
+          "Sun": 40,
+          "Venus": 70
+        },
+        "planet_strengths": [
+          {
+            "planet": "Moon",
+            "reason": "Moon is in friend sign மிதுனம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in friend sign கன்னி",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in neutral sign விருச்சிகம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in neutral sign மகரம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in neutral sign விருச்சிகம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in enemy sign துலாம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in enemy sign கன்னி",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 16.009024,
+            "dignity": "Enemy Sign",
+            "house": 11,
+            "latitude": 0.000155,
+            "longitude": 196.009024,
+            "nakshatra": "சுவாதி",
+            "nakshatra_lord": "ராகு",
+            "name": "Sun",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 1.000764,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 3.957116,
+            "dignity": "Friend Sign",
+            "house": 7,
+            "latitude": 3.968247,
+            "longitude": 63.957116,
+            "nakshatra": "மிருகசீரிடம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 12.009336,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 9.804028,
+            "dignity": "Enemy Sign",
+            "house": 10,
+            "latitude": 1.198251,
+            "longitude": 159.804028,
+            "nakshatra": "உத்திரம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.626374,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.176929,
+            "dignity": "Neutral Sign",
+            "house": 12,
+            "latitude": -2.57396,
+            "longitude": 218.176929,
+            "nakshatra": "அனுஷம்",
+            "nakshatra_lord": "சனி",
+            "name": "Mercury",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 1.237527,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 14.897848,
+            "dignity": "Neutral Sign",
+            "house": 2,
+            "latitude": -0.844119,
+            "longitude": 284.897848,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 0.093641,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 27.002326,
+            "dignity": "Friend Sign",
+            "house": 10,
+            "latitude": 1.532408,
+            "longitude": 177.002326,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 1.248077,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 4.594006,
+            "dignity": "Neutral Sign",
+            "house": 12,
+            "latitude": 1.826323,
+            "longitude": 214.594006,
+            "nakshatra": "அனுஷம்",
+            "nakshatra_lord": "சனி",
+            "name": "Saturn",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.114846,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 15.333354,
+            "dignity": "Normal",
+            "house": 5,
+            "latitude": -0.0,
+            "longitude": 15.333354,
+            "nakshatra": "பரணி",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 15.333354,
+            "dignity": "Normal",
+            "house": 11,
+            "latitude": 0.0,
+            "longitude": 195.333354,
+            "nakshatra": "சுவாதி",
+            "nakshatra_lord": "ராகு",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "name": "Raja Yoga",
+            "reason": "Mars (Lord of House 1) and Mars (Lord of House 5) are together in House 10",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Venus (Lord of House 7) and Mars (Lord of House 1) are together in House 10",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Venus (Lord of House 7) and Mars (Lord of House 5) are together in House 10",
+            "score": 90
+          },
+          {
+            "name": "Sarala Yoga",
+            "reason": "Mercury (8th Lord) is placed in House 12",
+            "score": 85
+          }
+        ]
+      }
+    },
+    "1990-05-15T10:30@13.0827,80.2707": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 26.636003,
+            "house": 1,
+            "longitude": 176.636003,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 26.527643,
+            "house": 2,
+            "longitude": 206.527643,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 25.954463,
+            "house": 3,
+            "longitude": 235.954463,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 25.362113,
+            "house": 4,
+            "longitude": 265.362113,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 25.709622,
+            "house": 5,
+            "longitude": 295.709622,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 26.751701,
+            "house": 6,
+            "longitude": 326.751701,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 26.636003,
+            "house": 7,
+            "longitude": 356.636003,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 26.527643,
+            "house": 8,
+            "longitude": 26.527643,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 25.954463,
+            "house": 9,
+            "longitude": 55.954463,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 25.362113,
+            "house": 10,
+            "longitude": 85.362113,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 25.709622,
+            "house": 11,
+            "longitude": 115.709622,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 26.751701,
+            "house": 12,
+            "longitude": 146.751701,
+            "sign": "சிம்மம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 26.636003,
+          "longitude": 176.636003,
+          "name": "Lagna",
+          "sign": "கன்னி"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "1990-05-15",
+        "moon_longitude": 272.66,
+        "moon_sign": "மகரம்",
+        "status": "success",
+        "sun_longitude": 30.61,
+        "sun_sign": "ரிஷபம்",
+        "time": "10:30"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 0.610048,
+            "latitude": -1.7e-05,
+            "longitude": 30.610048,
+            "nakshatra": "கார்த்திகை",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Sun",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 0.964181
+          },
+          {
+            "degree_in_sign": 2.664361,
+            "latitude": -1.21215,
+            "longitude": 272.664361,
+            "nakshatra": "உத்திராடம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Moon",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 12.340075
+          },
+          {
+            "degree_in_sign": 24.561628,
+            "latitude": -1.729386,
+            "longitude": 324.561628,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.742681
+          },
+          {
+            "degree_in_sign": 14.294325,
+            "latitude": -2.507397,
+            "longitude": 14.294325,
+            "nakshatra": "பரணி",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.12507
+          },
+          {
+            "degree_in_sign": 15.804065,
+            "latitude": 0.142545,
+            "longitude": 75.804065,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Jupiter",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.189057
+          },
+          {
+            "degree_in_sign": 19.021224,
+            "latitude": -1.795136,
+            "longitude": 349.021224,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 1.140479
+          },
+          {
+            "degree_in_sign": 1.524692,
+            "latitude": 0.155158,
+            "longitude": 271.524692,
+            "nakshatra": "உத்திராடம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Saturn",
+            "pada": 2,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.01686
+          },
+          {
+            "degree_in_sign": 17.616651,
+            "latitude": 0.0,
+            "longitude": 287.616651,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Rahu",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 17.616651,
+            "latitude": 0.0,
+            "longitude": 107.616651,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Ketu",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 3,
+            "house": 4,
+            "planets": [
+              "Moon",
+              "Saturn",
+              "Rahu"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 2,
+                "type": "7th"
+              }
+            ],
+            "from_house": 8,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 10,
+                "type": "7th"
+              }
+            ],
+            "from_house": 4,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 8,
+                "type": "4th"
+              },
+              {
+                "house": 11,
+                "type": "7th"
+              },
+              {
+                "house": 12,
+                "type": "8th"
+              }
+            ],
+            "from_house": 5,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "7th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "5th"
+              },
+              {
+                "house": 3,
+                "type": "7th"
+              },
+              {
+                "house": 5,
+                "type": "9th"
+              }
+            ],
+            "from_house": 9,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 12,
+                "type": "7th"
+              }
+            ],
+            "from_house": 6,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "3rd"
+              },
+              {
+                "house": 10,
+                "type": "7th"
+              },
+              {
+                "house": 1,
+                "type": "10th"
+              }
+            ],
+            "from_house": 4,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 4,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 10,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "lord_house": 6,
+            "lord_sign": "மீனம்",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 3,
+            "lord": "Mars",
+            "lord_house": 5,
+            "lord_sign": "கும்பம்",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "lord_house": 9,
+            "lord_sign": "மிதுனம்",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 5,
+            "lord": "Saturn",
+            "lord_house": 4,
+            "lord_sign": "மகரம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 6,
+            "lord": "Saturn",
+            "lord_house": 4,
+            "lord_sign": "மகரம்",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "lord_house": 9,
+            "lord_sign": "மிதுனம்",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "lord_house": 5,
+            "lord_sign": "கும்பம்",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 9,
+            "lord": "Venus",
+            "lord_house": 6,
+            "lord_sign": "மீனம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Moon",
+            "lord_house": 4,
+            "lord_sign": "மகரம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Sun",
+            "lord_house": 8,
+            "lord_sign": "ரிஷபம்",
+            "sign": "சிம்மம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 3,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 4,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 5,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 6,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 9,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 10,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": []
+          },
+          {
+            "house": 2,
+            "occupants": []
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": [
+              "Moon",
+              "Saturn",
+              "Rahu"
+            ]
+          },
+          {
+            "house": 5,
+            "occupants": [
+              "Mars"
+            ]
+          },
+          {
+            "house": 6,
+            "occupants": [
+              "Venus"
+            ]
+          },
+          {
+            "house": 7,
+            "occupants": []
+          },
+          {
+            "house": 8,
+            "occupants": [
+              "Sun"
+            ]
+          },
+          {
+            "house": 9,
+            "occupants": [
+              "Jupiter"
+            ]
+          },
+          {
+            "house": 10,
+            "occupants": [
+              "Ketu"
+            ]
+          },
+          {
+            "house": 11,
+            "occupants": []
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Mercury"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 26.636003,
+            "house": 1,
+            "longitude": 176.636003,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 26.527643,
+            "house": 2,
+            "longitude": 206.527643,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 25.954463,
+            "house": 3,
+            "longitude": 235.954463,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 25.362113,
+            "house": 4,
+            "longitude": 265.362113,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 25.709622,
+            "house": 5,
+            "longitude": 295.709622,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 26.751701,
+            "house": 6,
+            "longitude": 326.751701,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 26.636003,
+            "house": 7,
+            "longitude": 356.636003,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 26.527643,
+            "house": 8,
+            "longitude": 26.527643,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 25.954463,
+            "house": 9,
+            "longitude": 55.954463,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 25.362113,
+            "house": 10,
+            "longitude": 85.362113,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 25.709622,
+            "house": 11,
+            "longitude": 115.709622,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 26.751701,
+            "house": 12,
+            "longitude": 146.751701,
+            "sign": "சிம்மம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 40,
+          "Mars": 55,
+          "Mercury": 55,
+          "Moon": 55,
+          "Rahu": 15,
+          "Saturn": 80,
+          "Sun": 40,
+          "Venus": 100
+        },
+        "planet_strengths": [
+          {
+            "planet": "Venus",
+            "reason": "Venus is exalted in மீனம்",
+            "score": 100,
+            "strength": "Exalted"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in its own sign மகரம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Moon",
+            "reason": "Moon is in neutral sign மகரம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in neutral sign கும்பம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in neutral sign மேஷம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in enemy sign ரிஷபம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in enemy sign மிதுனம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is retrograde (speed -0.1251)",
+            "score": 15,
+            "strength": "Retrograde"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is retrograde (speed -0.0169)",
+            "score": 15,
+            "strength": "Retrograde"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 0.610048,
+            "dignity": "Enemy Sign",
+            "house": 8,
+            "latitude": -1.7e-05,
+            "longitude": 30.610048,
+            "nakshatra": "கார்த்திகை",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Sun",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 0.964181,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 2.664361,
+            "dignity": "Neutral Sign",
+            "house": 4,
+            "latitude": -1.21215,
+            "longitude": 272.664361,
+            "nakshatra": "உத்திராடம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Moon",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "மகரம்",
+            "speed": 12.340075,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 24.561628,
+            "dignity": "Neutral Sign",
+            "house": 5,
+            "latitude": -1.729386,
+            "longitude": 324.561628,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.742681,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 14.294325,
+            "dignity": "Neutral Sign",
+            "house": 12,
+            "latitude": -2.507397,
+            "longitude": 14.294325,
+            "nakshatra": "பரணி",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "மேஷம்",
+            "speed": -0.12507,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 15.804065,
+            "dignity": "Enemy Sign",
+            "house": 9,
+            "latitude": 0.142545,
+            "longitude": 75.804065,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Jupiter",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.189057,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 19.021224,
+            "dignity": "Exalted",
+            "house": 6,
+            "latitude": -1.795136,
+            "longitude": 349.021224,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 1.140479,
+            "strength_score": 100
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 1.524692,
+            "dignity": "Own Sign",
+            "house": 4,
+            "latitude": 0.155158,
+            "longitude": 271.524692,
+            "nakshatra": "உத்திராடம்",
+            "nakshatra_lord": "சூரியன்",
+            "name": "Saturn",
+            "pada": 2,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.01686,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 17.616651,
+            "dignity": "Normal",
+            "house": 4,
+            "latitude": 0.0,
+            "longitude": 287.616651,
+            "nakshatra": "திருவோணம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Rahu",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "மகரம்",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 17.616651,
+            "dignity": "Normal",
+            "house": 10,
+            "latitude": 0.0,
+            "longitude": 107.616651,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Ketu",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "name": "Raja Yoga",
+            "reason": "Mercury (Lord of House 10) and Mercury (Lord of House 1) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Vimala Yoga",
+            "reason": "Sun (12th Lord) is placed in House 8",
+            "score": 85
+          }
+        ]
+      }
+    },
+    "1996-03-08T17:40@-33.8688,151.2093": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 26.794997,
+            "house": 1,
+            "longitude": 296.794997,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 20.631371,
+            "house": 2,
+            "longitude": 320.631371,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 18.99692,
+            "house": 3,
+            "longitude": 348.99692,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 21.571259,
+            "house": 4,
+            "longitude": 21.571259,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 25.55873,
+            "house": 5,
+            "longitude": 55.55873,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 27.707424,
+            "house": 6,
+            "longitude": 87.707424,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 26.794997,
+            "house": 7,
+            "longitude": 116.794997,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 20.631371,
+            "house": 8,
+            "longitude": 140.631371,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 18.99692,
+            "house": 9,
+            "longitude": 168.99692,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 21.571259,
+            "house": 10,
+            "longitude": 201.571259,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 25.55873,
+            "house": 11,
+            "longitude": 235.55873,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 27.707424,
+            "house": 12,
+            "longitude": 267.707424,
+            "sign": "தனுசு"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 26.794997,
+          "longitude": 296.794997,
+          "name": "Lagna",
+          "sign": "மகரம்"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "1996-03-08",
+        "moon_longitude": 184.31,
+        "moon_sign": "துலாம்",
+        "status": "success",
+        "sun_longitude": 324.63,
+        "sun_sign": "கும்பம்",
+        "time": "17:40"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 24.633177,
+            "latitude": 0.000106,
+            "longitude": 324.633177,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Sun",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.99942
+          },
+          {
+            "degree_in_sign": 4.310405,
+            "latitude": 0.984459,
+            "longitude": 184.310405,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 13.199142
+          },
+          {
+            "degree_in_sign": 23.745904,
+            "latitude": -0.956375,
+            "longitude": 323.745904,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.786082
+          },
+          {
+            "degree_in_sign": 8.215346,
+            "latitude": -2.169303,
+            "longitude": 308.215346,
+            "nakshatra": "சதயம்",
+            "nakshatra_lord": "ராகு",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 1.640088
+          },
+          {
+            "degree_in_sign": 19.172885,
+            "latitude": 0.157427,
+            "longitude": 259.172885,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.152645
+          },
+          {
+            "degree_in_sign": 9.1439,
+            "latitude": 1.457452,
+            "longitude": 9.1439,
+            "nakshatra": "அசுவினி",
+            "nakshatra_lord": "கேது",
+            "name": "Venus",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மேஷம்",
+            "speed": 1.107052
+          },
+          {
+            "degree_in_sign": 2.545332,
+            "latitude": -2.018759,
+            "longitude": 332.545332,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Saturn",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.12329
+          },
+          {
+            "degree_in_sign": 25.045779,
+            "latitude": 0.0,
+            "longitude": 175.045779,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "கன்னி",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 25.045779,
+            "latitude": 0.0,
+            "longitude": 355.045779,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 3,
+            "house": 2,
+            "planets": [
+              "Sun",
+              "Mars",
+              "Saturn"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 9,
+            "planets": [
+              "Moon",
+              "Rahu"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 12,
+            "planets": [
+              "Venus",
+              "Ketu"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 8,
+                "type": "7th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 3,
+                "type": "7th"
+              }
+            ],
+            "from_house": 9,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 5,
+                "type": "4th"
+              },
+              {
+                "house": 8,
+                "type": "7th"
+              },
+              {
+                "house": 9,
+                "type": "8th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 7,
+                "type": "7th"
+              }
+            ],
+            "from_house": 1,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 3,
+                "type": "5th"
+              },
+              {
+                "house": 5,
+                "type": "7th"
+              },
+              {
+                "house": 7,
+                "type": "9th"
+              }
+            ],
+            "from_house": 11,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "7th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "3rd"
+              },
+              {
+                "house": 8,
+                "type": "7th"
+              },
+              {
+                "house": 11,
+                "type": "10th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 9,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 12,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Saturn",
+            "lord_house": 2,
+            "lord_sign": "மீனம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 2,
+            "lord": "Saturn",
+            "lord_house": 2,
+            "lord_sign": "மீனம்",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 3,
+            "lord": "Jupiter",
+            "lord_house": 11,
+            "lord_sign": "தனுசு",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mars",
+            "lord_house": 2,
+            "lord_sign": "கும்பம்",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 5,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mercury",
+            "lord_house": 1,
+            "lord_sign": "கும்பம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 7,
+            "lord": "Moon",
+            "lord_house": 9,
+            "lord_sign": "துலாம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 8,
+            "lord": "Sun",
+            "lord_house": 2,
+            "lord_sign": "கும்பம்",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mercury",
+            "lord_house": 1,
+            "lord_sign": "கும்பம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 10,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "மேஷம்",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 11,
+            "lord": "Mars",
+            "lord_house": 2,
+            "lord_sign": "கும்பம்",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Jupiter",
+            "lord_house": 11,
+            "lord_sign": "தனுசு",
+            "sign": "தனுசு"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 2,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 3,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 5,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 7,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 8,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 10,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 11,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 12,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": [
+              "Mercury"
+            ]
+          },
+          {
+            "house": 2,
+            "occupants": [
+              "Sun",
+              "Mars",
+              "Saturn"
+            ]
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": []
+          },
+          {
+            "house": 6,
+            "occupants": []
+          },
+          {
+            "house": 7,
+            "occupants": []
+          },
+          {
+            "house": 8,
+            "occupants": []
+          },
+          {
+            "house": 9,
+            "occupants": [
+              "Moon",
+              "Rahu"
+            ]
+          },
+          {
+            "house": 10,
+            "occupants": []
+          },
+          {
+            "house": 11,
+            "occupants": [
+              "Jupiter"
+            ]
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Venus",
+              "Ketu"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 26.794997,
+            "house": 1,
+            "longitude": 296.794997,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 20.631371,
+            "house": 2,
+            "longitude": 320.631371,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 18.99692,
+            "house": 3,
+            "longitude": 348.99692,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 21.571259,
+            "house": 4,
+            "longitude": 21.571259,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 25.55873,
+            "house": 5,
+            "longitude": 55.55873,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 27.707424,
+            "house": 6,
+            "longitude": 87.707424,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 26.794997,
+            "house": 7,
+            "longitude": 116.794997,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 20.631371,
+            "house": 8,
+            "longitude": 140.631371,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 18.99692,
+            "house": 9,
+            "longitude": 168.99692,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 21.571259,
+            "house": 10,
+            "longitude": 201.571259,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 25.55873,
+            "house": 11,
+            "longitude": 235.55873,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 27.707424,
+            "house": 12,
+            "longitude": 267.707424,
+            "sign": "தனுசு"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 80,
+          "Mars": 30,
+          "Mercury": 55,
+          "Rahu": 15,
+          "Saturn": 30,
+          "Sun": 40,
+          "Venus": 55
+        },
+        "planet_strengths": [
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in its own sign தனுசு",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in neutral sign கும்பம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in neutral sign கும்பம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in neutral sign மேஷம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in neutral sign மீனம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in enemy sign கும்பம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is combust (0.89° from Sun, limit 17°)",
+            "score": 25,
+            "strength": "Combust"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is combust (7.91° from Sun, limit 15°)",
+            "score": 25,
+            "strength": "Combust"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 24.633177,
+            "dignity": "Enemy Sign",
+            "house": 2,
+            "latitude": 0.000106,
+            "longitude": 324.633177,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Sun",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.99942,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 4.310405,
+            "dignity": "Normal",
+            "house": 9,
+            "latitude": 0.984459,
+            "longitude": 184.310405,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Moon",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 13.199142,
+            "strength_score": 0
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 23.745904,
+            "dignity": "Neutral Sign",
+            "house": 2,
+            "latitude": -0.956375,
+            "longitude": 323.745904,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 0.786082,
+            "strength_score": 30
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.215346,
+            "dignity": "Neutral Sign",
+            "house": 1,
+            "latitude": -2.169303,
+            "longitude": 308.215346,
+            "nakshatra": "சதயம்",
+            "nakshatra_lord": "ராகு",
+            "name": "Mercury",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கும்பம்",
+            "speed": 1.640088,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 19.172885,
+            "dignity": "Own Sign",
+            "house": 11,
+            "latitude": 0.157427,
+            "longitude": 259.172885,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Jupiter",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.152645,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 9.1439,
+            "dignity": "Neutral Sign",
+            "house": 12,
+            "latitude": 1.457452,
+            "longitude": 9.1439,
+            "nakshatra": "அசுவினி",
+            "nakshatra_lord": "கேது",
+            "name": "Venus",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மேஷம்",
+            "speed": 1.107052,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 2.545332,
+            "dignity": "Neutral Sign",
+            "house": 2,
+            "latitude": -2.018759,
+            "longitude": 332.545332,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Saturn",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.12329,
+            "strength_score": 30
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 25.045779,
+            "dignity": "Normal",
+            "house": 9,
+            "latitude": 0.0,
+            "longitude": 175.045779,
+            "nakshatra": "சித்திரை",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Rahu",
+            "pada": 1,
+            "retrograde": true,
+            "sign": "கன்னி",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 25.045779,
+            "dignity": "Normal",
+            "house": 12,
+            "latitude": 0.0,
+            "longitude": 355.045779,
+            "nakshatra": "ரேவதி",
+            "nakshatra_lord": "புதன்",
+            "name": "Ketu",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "name": "Raja Yoga",
+            "reason": "Mars (Lord of House 4) and Saturn (Lord of House 1) are together in House 2",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Venus (Lord of House 10) and Venus (Lord of House 5) are together in House 12",
+            "score": 90
+          }
+        ]
+      }
+    },
+    "2001-07-21T23:15@19.076,72.8777": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 15.224363,
+            "house": 1,
+            "longitude": 75.224363,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 9.861091,
+            "house": 2,
+            "longitude": 99.861091,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 6.788102,
+            "house": 3,
+            "longitude": 126.788102,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 7.660573,
+            "house": 4,
+            "longitude": 157.660573,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 11.384163,
+            "house": 5,
+            "longitude": 191.384163,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 14.550147,
+            "house": 6,
+            "longitude": 224.550147,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 15.224363,
+            "house": 7,
+            "longitude": 255.224363,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 9.861091,
+            "house": 8,
+            "longitude": 279.861091,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 6.788102,
+            "house": 9,
+            "longitude": 306.788102,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 7.660573,
+            "house": 10,
+            "longitude": 337.660573,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 11.384163,
+            "house": 11,
+            "longitude": 11.384163,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 14.550147,
+            "house": 12,
+            "longitude": 44.550147,
+            "sign": "ரிஷபம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 15.224363,
+          "longitude": 75.224363,
+          "name": "Lagna",
+          "sign": "மிதுனம்"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "2001-07-21",
+        "moon_longitude": 111.53,
+        "moon_sign": "கடகம்",
+        "status": "success",
+        "sun_longitude": 95.36,
+        "sun_sign": "கடகம்",
+        "time": "23:15"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 5.361959,
+            "latitude": 2e-06,
+            "longitude": 95.361959,
+            "nakshatra": "பூசம்",
+            "nakshatra_lord": "சனி",
+            "name": "Sun",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.9551
+          },
+          {
+            "degree_in_sign": 21.53367,
+            "latitude": 3.31278,
+            "longitude": 111.53367,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Moon",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 15.100175
+          },
+          {
+            "degree_in_sign": 21.262786,
+            "latitude": -4.253361,
+            "longitude": 231.262786,
+            "nakshatra": "கேட்டை",
+            "nakshatra_lord": "புதன்",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.028532
+          },
+          {
+            "degree_in_sign": 19.551642,
+            "latitude": -0.195558,
+            "longitude": 79.551642,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Mercury",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 1.777255
+          },
+          {
+            "degree_in_sign": 8.093431,
+            "latitude": -0.264771,
+            "longitude": 68.093431,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Jupiter",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.21628
+          },
+          {
+            "degree_in_sign": 24.135848,
+            "latitude": -2.162364,
+            "longitude": 54.135848,
+            "nakshatra": "மிருகசீரிடம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 1.126593
+          },
+          {
+            "degree_in_sign": 17.380368,
+            "latitude": -1.701203,
+            "longitude": 47.380368,
+            "nakshatra": "ரோகிணி",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Saturn",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 0.1009
+          },
+          {
+            "degree_in_sign": 11.116113,
+            "latitude": 0.0,
+            "longitude": 71.116113,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Rahu",
+            "pada": 2,
+            "retrograde": true,
+            "sign": "மிதுனம்",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 11.116113,
+            "latitude": 0.0,
+            "longitude": 251.116113,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Ketu",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 2,
+            "house": 1,
+            "planets": [
+              "Sun",
+              "Mercury"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 6,
+            "planets": [
+              "Mars",
+              "Ketu"
+            ]
+          },
+          {
+            "count": 4,
+            "house": 12,
+            "planets": [
+              "Jupiter",
+              "Venus",
+              "Saturn",
+              "Rahu"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 7,
+                "type": "7th"
+              }
+            ],
+            "from_house": 1,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 8,
+                "type": "7th"
+              }
+            ],
+            "from_house": 2,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 9,
+                "type": "4th"
+              },
+              {
+                "house": 12,
+                "type": "7th"
+              },
+              {
+                "house": 1,
+                "type": "8th"
+              }
+            ],
+            "from_house": 6,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 7,
+                "type": "7th"
+              }
+            ],
+            "from_house": 1,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "5th"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 8,
+                "type": "9th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 6,
+                "type": "7th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 2,
+                "type": "3rd"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 9,
+                "type": "10th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 12,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 6,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "lord_house": 1,
+            "lord_sign": "மிதுனம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Moon",
+            "lord_house": 2,
+            "lord_sign": "கடகம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 3,
+            "lord": "Sun",
+            "lord_house": 1,
+            "lord_sign": "கடகம்",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "lord_house": 1,
+            "lord_sign": "மிதுனம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 5,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "ரிஷபம்",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mars",
+            "lord_house": 6,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "lord_house": 12,
+            "lord_sign": "மிதுனம்",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 8,
+            "lord": "Saturn",
+            "lord_house": 12,
+            "lord_sign": "ரிஷபம்",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 9,
+            "lord": "Saturn",
+            "lord_house": 12,
+            "lord_sign": "ரிஷபம்",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "lord_house": 12,
+            "lord_sign": "மிதுனம்",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Mars",
+            "lord_house": 6,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 12,
+            "lord": "Venus",
+            "lord_house": 12,
+            "lord_sign": "ரிஷபம்",
+            "sign": "ரிஷபம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 3,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 5,
+            "lord": "Venus",
+            "sign": "துலாம்"
+          },
+          {
+            "house": 6,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 7,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 8,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 9,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 11,
+            "lord": "Mars",
+            "sign": "மேஷம்"
+          },
+          {
+            "house": 12,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": [
+              "Sun",
+              "Mercury"
+            ]
+          },
+          {
+            "house": 2,
+            "occupants": [
+              "Moon"
+            ]
+          },
+          {
+            "house": 3,
+            "occupants": []
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": []
+          },
+          {
+            "house": 6,
+            "occupants": [
+              "Mars",
+              "Ketu"
+            ]
+          },
+          {
+            "house": 7,
+            "occupants": []
+          },
+          {
+            "house": 8,
+            "occupants": []
+          },
+          {
+            "house": 9,
+            "occupants": []
+          },
+          {
+            "house": 10,
+            "occupants": []
+          },
+          {
+            "house": 11,
+            "occupants": []
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Jupiter",
+              "Venus",
+              "Saturn",
+              "Rahu"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 15.224363,
+            "house": 1,
+            "longitude": 75.224363,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 9.861091,
+            "house": 2,
+            "longitude": 99.861091,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 6.788102,
+            "house": 3,
+            "longitude": 126.788102,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 7.660573,
+            "house": 4,
+            "longitude": 157.660573,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 11.384163,
+            "house": 5,
+            "longitude": 191.384163,
+            "sign": "துலாம்"
+          },
+          {
+            "degree_in_sign": 14.550147,
+            "house": 6,
+            "longitude": 224.550147,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 15.224363,
+            "house": 7,
+            "longitude": 255.224363,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 9.861091,
+            "house": 8,
+            "longitude": 279.861091,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 6.788102,
+            "house": 9,
+            "longitude": 306.788102,
+            "sign": "கும்பம்"
+          },
+          {
+            "degree_in_sign": 7.660573,
+            "house": 10,
+            "longitude": 337.660573,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 11.384163,
+            "house": 11,
+            "longitude": 11.384163,
+            "sign": "மேஷம்"
+          },
+          {
+            "degree_in_sign": 14.550147,
+            "house": 12,
+            "longitude": 44.550147,
+            "sign": "ரிஷபம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 40,
+          "Mars": 80,
+          "Mercury": 80,
+          "Moon": 80,
+          "Rahu": 15,
+          "Saturn": 70,
+          "Sun": 70,
+          "Venus": 80
+        },
+        "planet_strengths": [
+          {
+            "planet": "Moon",
+            "reason": "Moon is in its own sign கடகம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in its own sign விருச்சிகம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in its own sign மிதுனம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in its own sign ரிஷபம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in friend sign கடகம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in friend sign ரிஷபம்",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in enemy sign மிதுனம்",
+            "score": 40,
+            "strength": "Enemy Sign"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 5.361959,
+            "dignity": "Friend Sign",
+            "house": 1,
+            "latitude": 2e-06,
+            "longitude": 95.361959,
+            "nakshatra": "பூசம்",
+            "nakshatra_lord": "சனி",
+            "name": "Sun",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 0.9551,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 21.53367,
+            "dignity": "Own Sign",
+            "house": 2,
+            "latitude": 3.31278,
+            "longitude": 111.53367,
+            "nakshatra": "ஆயில்யம்",
+            "nakshatra_lord": "புதன்",
+            "name": "Moon",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "கடகம்",
+            "speed": 15.100175,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 21.262786,
+            "dignity": "Own Sign",
+            "house": 6,
+            "latitude": -4.253361,
+            "longitude": 231.262786,
+            "nakshatra": "கேட்டை",
+            "nakshatra_lord": "புதன்",
+            "name": "Mars",
+            "pada": 2,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.028532,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 19.551642,
+            "dignity": "Own Sign",
+            "house": 1,
+            "latitude": -0.195558,
+            "longitude": 79.551642,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Mercury",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 1.777255,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.093431,
+            "dignity": "Enemy Sign",
+            "house": 12,
+            "latitude": -0.264771,
+            "longitude": 68.093431,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Jupiter",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.21628,
+            "strength_score": 40
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 24.135848,
+            "dignity": "Own Sign",
+            "house": 12,
+            "latitude": -2.162364,
+            "longitude": 54.135848,
+            "nakshatra": "மிருகசீரிடம்",
+            "nakshatra_lord": "செவ்வாய்",
+            "name": "Venus",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 1.126593,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 17.380368,
+            "dignity": "Friend Sign",
+            "house": 12,
+            "latitude": -1.701203,
+            "longitude": 47.380368,
+            "nakshatra": "ரோகிணி",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Saturn",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "ரிஷபம்",
+            "speed": 0.1009,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 11.116113,
+            "dignity": "Normal",
+            "house": 12,
+            "latitude": 0.0,
+            "longitude": 71.116113,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Rahu",
+            "pada": 2,
+            "retrograde": true,
+            "sign": "மிதுனம்",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 11.116113,
+            "dignity": "Normal",
+            "house": 6,
+            "latitude": 0.0,
+            "longitude": 251.116113,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Ketu",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "found": true,
+            "house": 1,
+            "name": "Budha Aditya Yoga",
+            "reason": "Sun and Mercury are conjunct in House 1",
+            "strength": "Normal"
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Mercury (Lord of House 4) and Mercury (Lord of House 1) are together in House 1",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 7) and Venus (Lord of House 5) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 7) and Saturn (Lord of House 9) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 10) and Venus (Lord of House 5) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 10) and Saturn (Lord of House 9) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Harsha Yoga",
+            "reason": "Mars (6th Lord) is placed in House 6",
+            "score": 85
+          },
+          {
+            "name": "Sarala Yoga",
+            "reason": "Saturn (8th Lord) is placed in House 12",
+            "score": 85
+          },
+          {
+            "name": "Vimala Yoga",
+            "reason": "Venus (12th Lord) is placed in House 12",
+            "score": 85
+          }
+        ]
+      }
+    },
+    "2010-12-31T12:00@51.5074,-0.1278": {
+      "houses": {
+        "houses": [
+          {
+            "degree_in_sign": 28.574944,
+            "house": 1,
+            "longitude": 358.574944,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 6.208067,
+            "house": 2,
+            "longitude": 36.208067,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 27.279241,
+            "house": 3,
+            "longitude": 57.279241,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 14.881604,
+            "house": 4,
+            "longitude": 74.881604,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 4.206605,
+            "house": 5,
+            "longitude": 94.206605,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 2.474692,
+            "house": 6,
+            "longitude": 122.474692,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 28.574944,
+            "house": 7,
+            "longitude": 178.574944,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 6.208067,
+            "house": 8,
+            "longitude": 216.208067,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 27.279241,
+            "house": 9,
+            "longitude": 237.279241,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 14.881604,
+            "house": 10,
+            "longitude": 254.881604,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 4.206605,
+            "house": 11,
+            "longitude": 274.206605,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 2.474692,
+            "house": 12,
+            "longitude": 302.474692,
+            "sign": "கும்பம்"
+          }
+        ],
+        "status": "success"
+      },
+      "lagna": {
+        "lagna": {
+          "degree_in_sign": 28.574944,
+          "longitude": 358.574944,
+          "name": "Lagna",
+          "sign": "மீனம்"
+        },
+        "status": "success"
+      },
+      "legacy_horoscope": {
+        "date": "2010-12-31",
+        "moon_longitude": 208.44,
+        "moon_sign": "துலாம்",
+        "status": "success",
+        "sun_longitude": 255.68,
+        "sun_sign": "தனுசு",
+        "time": "12:00"
+      },
+      "planet_positions": {
+        "planet": [
+          {
+            "degree_in_sign": 15.677747,
+            "latitude": -1e-06,
+            "longitude": 255.677747,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Sun",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.019398
+          },
+          {
+            "degree_in_sign": 28.444863,
+            "latitude": -3.423511,
+            "longitude": 208.444863,
+            "nakshatra": "விசாகம்",
+            "nakshatra_lord": "குரு",
+            "name": "Moon",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 13.608795
+          },
+          {
+            "degree_in_sign": 23.969471,
+            "latitude": -0.988516,
+            "longitude": 263.969471,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.773437
+          },
+          {
+            "degree_in_sign": 25.716584,
+            "latitude": 2.886951,
+            "longitude": 235.716584,
+            "nakshatra": "கேட்டை",
+            "nakshatra_lord": "புதன்",
+            "name": "Mercury",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.17722
+          },
+          {
+            "degree_in_sign": 2.469272,
+            "latitude": -1.268186,
+            "longitude": 332.469272,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Jupiter",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.132697
+          },
+          {
+            "degree_in_sign": 29.069721,
+            "latitude": 3.491236,
+            "longitude": 209.069721,
+            "nakshatra": "விசாகம்",
+            "nakshatra_lord": "குரு",
+            "name": "Venus",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 0.956006
+          },
+          {
+            "degree_in_sign": 22.622449,
+            "latitude": 2.40616,
+            "longitude": 172.622449,
+            "nakshatra": "ஹஸ்தம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Saturn",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.045076
+          },
+          {
+            "degree_in_sign": 8.318535,
+            "latitude": -0.0,
+            "longitude": 248.318535,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Rahu",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "தனுசு",
+            "speed": -0.052992
+          },
+          {
+            "degree_in_sign": 8.318535,
+            "latitude": 0.0,
+            "longitude": 68.318535,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Ketu",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.0
+          }
+        ],
+        "status": "success"
+      },
+      "rasi_chart": {
+        "conjunctions": [
+          {
+            "count": 2,
+            "house": 7,
+            "planets": [
+              "Moon",
+              "Venus"
+            ]
+          },
+          {
+            "count": 2,
+            "house": 10,
+            "planets": [
+              "Sun",
+              "Mars"
+            ]
+          }
+        ],
+        "graha_drishti": [
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "7th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Sun"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "7th"
+              }
+            ],
+            "from_house": 7,
+            "planet": "Moon"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "4th"
+              },
+              {
+                "house": 4,
+                "type": "7th"
+              },
+              {
+                "house": 5,
+                "type": "8th"
+              }
+            ],
+            "from_house": 10,
+            "planet": "Mars"
+          },
+          {
+            "aspects": [
+              {
+                "house": 2,
+                "type": "7th"
+              }
+            ],
+            "from_house": 8,
+            "planet": "Mercury"
+          },
+          {
+            "aspects": [
+              {
+                "house": 4,
+                "type": "5th"
+              },
+              {
+                "house": 6,
+                "type": "7th"
+              },
+              {
+                "house": 8,
+                "type": "9th"
+              }
+            ],
+            "from_house": 12,
+            "planet": "Jupiter"
+          },
+          {
+            "aspects": [
+              {
+                "house": 1,
+                "type": "7th"
+              }
+            ],
+            "from_house": 7,
+            "planet": "Venus"
+          },
+          {
+            "aspects": [
+              {
+                "house": 8,
+                "type": "3rd"
+              },
+              {
+                "house": 12,
+                "type": "7th"
+              },
+              {
+                "house": 3,
+                "type": "10th"
+              }
+            ],
+            "from_house": 6,
+            "planet": "Saturn"
+          },
+          {
+            "aspects": [],
+            "from_house": 9,
+            "planet": "Rahu"
+          },
+          {
+            "aspects": [],
+            "from_house": 3,
+            "planet": "Ketu"
+          }
+        ],
+        "house_lord_positions": [
+          {
+            "house": 1,
+            "lord": "Jupiter",
+            "lord_house": 12,
+            "lord_sign": "மீனம்",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "lord_house": 7,
+            "lord_sign": "துலாம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 3,
+            "lord": "Venus",
+            "lord_house": 7,
+            "lord_sign": "துலாம்",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "lord_house": 8,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Moon",
+            "lord_house": 7,
+            "lord_sign": "துலாம்",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 6,
+            "lord": "Sun",
+            "lord_house": 10,
+            "lord_sign": "தனுசு",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 7,
+            "lord": "Mercury",
+            "lord_house": 8,
+            "lord_sign": "விருச்சிகம்",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "தனுசு",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mars",
+            "lord_house": 10,
+            "lord_sign": "தனுசு",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "lord_house": 12,
+            "lord_sign": "மீனம்",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 11,
+            "lord": "Saturn",
+            "lord_house": 6,
+            "lord_sign": "கன்னி",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 12,
+            "lord": "Saturn",
+            "lord_house": 6,
+            "lord_sign": "கன்னி",
+            "sign": "கும்பம்"
+          }
+        ],
+        "house_lords": [
+          {
+            "house": 1,
+            "lord": "Jupiter",
+            "sign": "மீனம்"
+          },
+          {
+            "house": 2,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 3,
+            "lord": "Venus",
+            "sign": "ரிஷபம்"
+          },
+          {
+            "house": 4,
+            "lord": "Mercury",
+            "sign": "மிதுனம்"
+          },
+          {
+            "house": 5,
+            "lord": "Moon",
+            "sign": "கடகம்"
+          },
+          {
+            "house": 6,
+            "lord": "Sun",
+            "sign": "சிம்மம்"
+          },
+          {
+            "house": 7,
+            "lord": "Mercury",
+            "sign": "கன்னி"
+          },
+          {
+            "house": 8,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 9,
+            "lord": "Mars",
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "house": 10,
+            "lord": "Jupiter",
+            "sign": "தனுசு"
+          },
+          {
+            "house": 11,
+            "lord": "Saturn",
+            "sign": "மகரம்"
+          },
+          {
+            "house": 12,
+            "lord": "Saturn",
+            "sign": "கும்பம்"
+          }
+        ],
+        "house_occupants": [
+          {
+            "house": 1,
+            "occupants": []
+          },
+          {
+            "house": 2,
+            "occupants": []
+          },
+          {
+            "house": 3,
+            "occupants": [
+              "Ketu"
+            ]
+          },
+          {
+            "house": 4,
+            "occupants": []
+          },
+          {
+            "house": 5,
+            "occupants": []
+          },
+          {
+            "house": 6,
+            "occupants": [
+              "Saturn"
+            ]
+          },
+          {
+            "house": 7,
+            "occupants": [
+              "Moon",
+              "Venus"
+            ]
+          },
+          {
+            "house": 8,
+            "occupants": [
+              "Mercury"
+            ]
+          },
+          {
+            "house": 9,
+            "occupants": [
+              "Rahu"
+            ]
+          },
+          {
+            "house": 10,
+            "occupants": [
+              "Sun",
+              "Mars"
+            ]
+          },
+          {
+            "house": 11,
+            "occupants": []
+          },
+          {
+            "house": 12,
+            "occupants": [
+              "Jupiter"
+            ]
+          }
+        ],
+        "houses": [
+          {
+            "degree_in_sign": 28.574944,
+            "house": 1,
+            "longitude": 358.574944,
+            "sign": "மீனம்"
+          },
+          {
+            "degree_in_sign": 6.208067,
+            "house": 2,
+            "longitude": 36.208067,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 27.279241,
+            "house": 3,
+            "longitude": 57.279241,
+            "sign": "ரிஷபம்"
+          },
+          {
+            "degree_in_sign": 14.881604,
+            "house": 4,
+            "longitude": 74.881604,
+            "sign": "மிதுனம்"
+          },
+          {
+            "degree_in_sign": 4.206605,
+            "house": 5,
+            "longitude": 94.206605,
+            "sign": "கடகம்"
+          },
+          {
+            "degree_in_sign": 2.474692,
+            "house": 6,
+            "longitude": 122.474692,
+            "sign": "சிம்மம்"
+          },
+          {
+            "degree_in_sign": 28.574944,
+            "house": 7,
+            "longitude": 178.574944,
+            "sign": "கன்னி"
+          },
+          {
+            "degree_in_sign": 6.208067,
+            "house": 8,
+            "longitude": 216.208067,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 27.279241,
+            "house": 9,
+            "longitude": 237.279241,
+            "sign": "விருச்சிகம்"
+          },
+          {
+            "degree_in_sign": 14.881604,
+            "house": 10,
+            "longitude": 254.881604,
+            "sign": "தனுசு"
+          },
+          {
+            "degree_in_sign": 4.206605,
+            "house": 11,
+            "longitude": 274.206605,
+            "sign": "மகரம்"
+          },
+          {
+            "degree_in_sign": 2.474692,
+            "house": 12,
+            "longitude": 302.474692,
+            "sign": "கும்பம்"
+          }
+        ],
+        "planet_scores": {
+          "Jupiter": 80,
+          "Mars": 45,
+          "Mercury": 55,
+          "Rahu": 15,
+          "Saturn": 70,
+          "Sun": 70,
+          "Venus": 80
+        },
+        "planet_strengths": [
+          {
+            "planet": "Jupiter",
+            "reason": "Jupiter is in its own sign மீனம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Venus",
+            "reason": "Venus is in its own sign துலாம்",
+            "score": 80,
+            "strength": "Own Sign"
+          },
+          {
+            "planet": "Sun",
+            "reason": "Sun is in friend sign தனுசு",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is in friend sign தனுசு",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Saturn",
+            "reason": "Saturn is in friend sign கன்னி",
+            "score": 70,
+            "strength": "Friend Sign"
+          },
+          {
+            "planet": "Mercury",
+            "reason": "Mercury is in neutral sign விருச்சிகம்",
+            "score": 55,
+            "strength": "Neutral Sign"
+          },
+          {
+            "planet": "Mars",
+            "reason": "Mars is combust (8.29° from Sun, limit 17°)",
+            "score": 25,
+            "strength": "Combust"
+          },
+          {
+            "planet": "Rahu",
+            "reason": "Rahu is retrograde (speed -0.0530)",
+            "score": 15,
+            "strength": "Retrograde"
+          }
+        ],
+        "planets": [
+          {
+            "declination": 0.0,
+            "degree_in_sign": 15.677747,
+            "dignity": "Friend Sign",
+            "house": 10,
+            "latitude": -1e-06,
+            "longitude": 255.677747,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Sun",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 1.019398,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 28.444863,
+            "dignity": "Normal",
+            "house": 7,
+            "latitude": -3.423511,
+            "longitude": 208.444863,
+            "nakshatra": "விசாகம்",
+            "nakshatra_lord": "குரு",
+            "name": "Moon",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 13.608795,
+            "strength_score": 0
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 23.969471,
+            "dignity": "Friend Sign",
+            "house": 10,
+            "latitude": -0.988516,
+            "longitude": 263.969471,
+            "nakshatra": "பூராடம்",
+            "nakshatra_lord": "சுக்கிரன்",
+            "name": "Mars",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "தனுசு",
+            "speed": 0.773437,
+            "strength_score": 45
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 25.716584,
+            "dignity": "Neutral Sign",
+            "house": 8,
+            "latitude": 2.886951,
+            "longitude": 235.716584,
+            "nakshatra": "கேட்டை",
+            "nakshatra_lord": "புதன்",
+            "name": "Mercury",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "விருச்சிகம்",
+            "speed": 0.17722,
+            "strength_score": 55
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 2.469272,
+            "dignity": "Own Sign",
+            "house": 12,
+            "latitude": -1.268186,
+            "longitude": 332.469272,
+            "nakshatra": "பூரட்டாதி",
+            "nakshatra_lord": "குரு",
+            "name": "Jupiter",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "மீனம்",
+            "speed": 0.132697,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 29.069721,
+            "dignity": "Own Sign",
+            "house": 7,
+            "latitude": 3.491236,
+            "longitude": 209.069721,
+            "nakshatra": "விசாகம்",
+            "nakshatra_lord": "குரு",
+            "name": "Venus",
+            "pada": 3,
+            "retrograde": false,
+            "sign": "துலாம்",
+            "speed": 0.956006,
+            "strength_score": 80
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 22.622449,
+            "dignity": "Friend Sign",
+            "house": 6,
+            "latitude": 2.40616,
+            "longitude": 172.622449,
+            "nakshatra": "ஹஸ்தம்",
+            "nakshatra_lord": "சந்திரன்",
+            "name": "Saturn",
+            "pada": 4,
+            "retrograde": false,
+            "sign": "கன்னி",
+            "speed": 0.045076,
+            "strength_score": 70
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.318535,
+            "dignity": "Normal",
+            "house": 9,
+            "latitude": -0.0,
+            "longitude": 248.318535,
+            "nakshatra": "மூலம்",
+            "nakshatra_lord": "கேது",
+            "name": "Rahu",
+            "pada": 3,
+            "retrograde": true,
+            "sign": "தனுசு",
+            "speed": -0.052992,
+            "strength_score": 15
+          },
+          {
+            "declination": 0.0,
+            "degree_in_sign": 8.318535,
+            "dignity": "Normal",
+            "house": 3,
+            "latitude": 0.0,
+            "longitude": 68.318535,
+            "nakshatra": "திருவாதிரை",
+            "nakshatra_lord": "ராகு",
+            "name": "Ketu",
+            "pada": 1,
+            "retrograde": false,
+            "sign": "மிதுனம்",
+            "speed": 0.0,
+            "strength_score": 0
+          }
+        ],
+        "yogas": [
+          {
+            "name": "Raja Yoga",
+            "reason": "Jupiter (Lord of House 10) and Jupiter (Lord of House 1) are together in House 12",
+            "score": 90
+          },
+          {
+            "name": "Vimala Yoga",
+            "reason": "Saturn (12th Lord) is placed in House 6",
+            "score": 85
+          }
+        ]
+      }
+    },
+    "health": {
+      "status": "healthy"
+    }
+  }
+}
