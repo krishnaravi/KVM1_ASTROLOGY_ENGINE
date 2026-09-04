@@ -1,22 +1,38 @@
 from fastapi import APIRouter
 
+from models.response_models import RasiChartResponse
 from services.chart_service import build_rasi_chart
+from validators.api_input_validator import validate_api_inputs
 
 router = APIRouter(
     prefix="/api",
     tags=["Chart"]
 )
 
-@router.get("/rasi-chart")
+@router.get(
+    "/rasi-chart",
+    response_model=RasiChartResponse,
+    response_model_exclude_none=True,
+)
 def rasi_chart(
     date: str,
     time: str,
     latitude: float,
-    longitude: float
+    longitude: float,
+    timezone: float = 0.0,
 ):
+    validate_api_inputs(
+        date,
+        time,
+        latitude,
+        longitude,
+        timezone,
+        require_location=True,
+    )
     return build_rasi_chart(
         date,
         time,
         latitude,
-        longitude
+        longitude,
+        timezone,
     )

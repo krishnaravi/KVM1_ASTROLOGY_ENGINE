@@ -3,9 +3,7 @@ Julian Day Calculation Service implementing IJulianDayService and IPipelineStage
 """
 
 import time
-import swisseph as swe
-from datetime import datetime, timezone, timedelta
-from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
+from core.swisseph_service import get_julian_day, get_utc_datetime
 from core.interfaces.pipeline_interface import IPipelineStage
 from core.interfaces.julian_day_interface import IJulianDayService
 from domain.models.calculation_context import CalculationContext
@@ -39,32 +37,12 @@ class JulianDayService(IJulianDayService, IPipelineStage):
         Converts local datetime to UTC datetime and calculates Swiss Ephemeris Julian Day.
         """
         try:
-            try:
-                tz = ZoneInfo(timezone_context.iana_timezone)
-            except (ZoneInfoNotFoundError, Exception):
-                if timezone_context.utc_offset_seconds != 0:
-                    tz = timezone(timedelta(seconds=timezone_context.utc_offset_seconds))
-                else:
-                    tz = timezone.utc
-
-            time_parts = time_str.split(":")
-            hour = int(time_parts[0])
-            minute = int(time_parts[1])
-            second = int(time_parts[2]) if len(time_parts) > 2 else 0
-
-            local_dt = datetime.strptime(date_str, "%Y-%m-%d").replace(
-                hour=hour, minute=minute, second=second, tzinfo=tz
-            )
-
-            # Convert to UTC
-            utc_dt = local_dt.astimezone(timezone.utc)
-
-            # Compute Julian Day in UT
-            decimal_hour = utc_dt.hour + (utc_dt.minute / 60.0) + (utc_dt.second / 3600.0) + (utc_dt.microsecond / 3600000000.0)
-            julian_day = float(swe.julday(utc_dt.year, utc_dt.month, utc_dt.day, decimal_hour))
+            offset_hours = timezone_context.utc_offset_seconds / 3600.0
+            utc_dt = get_utc_datetime(date_str, time_str, offset_hours)
+            julian_day = float(get_julian_day(date_str, time_str, offset_hours))
 
             return JulianDayContext(
-                local_datetime=local_dt.isoformat(),
+                local_datetime=f"{date_str}T{time_str}{timezone_context.utc_offset}",
                 utc_datetime=utc_dt.isoformat(),
                 julian_day=julian_day,
             )

@@ -9,7 +9,7 @@ import swisseph as swe
 from typing import Tuple, List
 from core.interfaces.pipeline_interface import IPipelineStage
 from core.interfaces.swisseph_interface import ISwissephService
-from core.constants import SIDEREAL_MODE, PLANETS, ZODIAC_SIGNS
+from core.constants import PLANETS, ZODIAC_SIGNS
 from core.nakshatra import get_nakshatra
 from domain.models.calculation_context import CalculationContext
 from domain.models.ephemeris_context import EphemerisContext
@@ -18,10 +18,6 @@ from domain.models.stage_metrics import PipelineStageMetrics
 from domain.planet import Planet
 from domain.house import House
 from core.errors import SwissEphemerisError
-
-# Initialize Lahiri Sidereal Mode
-swe.set_sid_mode(SIDEREAL_MODE)
-
 
 class SwissephService(ISwissephService, IPipelineStage):
     """

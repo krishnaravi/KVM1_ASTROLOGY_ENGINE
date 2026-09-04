@@ -2,6 +2,665 @@
   "openapi": {
     "components": {
       "schemas": {
+        "AspectValue": {
+          "additionalProperties": true,
+          "properties": {
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "type": {
+              "title": "Type",
+              "type": "string"
+            }
+          },
+          "required": [
+            "house",
+            "type"
+          ],
+          "title": "AspectValue",
+          "type": "object"
+        },
+        "ChartPlanetValue": {
+          "additionalProperties": true,
+          "properties": {
+            "declination": {
+              "title": "Declination",
+              "type": "number"
+            },
+            "degree_in_sign": {
+              "title": "Degree In Sign",
+              "type": "number"
+            },
+            "dignity": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dignity"
+            },
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "latitude": {
+              "title": "Latitude",
+              "type": "number"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "nakshatra": {
+              "title": "Nakshatra",
+              "type": "string"
+            },
+            "nakshatra_lord": {
+              "title": "Nakshatra Lord",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "pada": {
+              "title": "Pada",
+              "type": "integer"
+            },
+            "retrograde": {
+              "title": "Retrograde",
+              "type": "boolean"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            },
+            "speed": {
+              "title": "Speed",
+              "type": "number"
+            },
+            "strength_score": {
+              "default": 0,
+              "title": "Strength Score",
+              "type": "integer"
+            }
+          },
+          "required": [
+            "name",
+            "longitude",
+            "latitude",
+            "speed",
+            "retrograde",
+            "sign",
+            "degree_in_sign",
+            "house",
+            "nakshatra",
+            "nakshatra_lord",
+            "pada",
+            "declination"
+          ],
+          "title": "ChartPlanetValue",
+          "type": "object"
+        },
+        "ConjunctionValue": {
+          "additionalProperties": true,
+          "properties": {
+            "count": {
+              "title": "Count",
+              "type": "integer"
+            },
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "planets": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Planets",
+              "type": "array"
+            }
+          },
+          "required": [
+            "house",
+            "planets",
+            "count"
+          ],
+          "title": "ConjunctionValue",
+          "type": "object"
+        },
+        "GrahaDrishtiValue": {
+          "additionalProperties": true,
+          "properties": {
+            "aspects": {
+              "items": {
+                "$ref": "#/components/schemas/AspectValue"
+              },
+              "title": "Aspects",
+              "type": "array"
+            },
+            "from_house": {
+              "title": "From House",
+              "type": "integer"
+            },
+            "planet": {
+              "title": "Planet",
+              "type": "string"
+            }
+          },
+          "required": [
+            "planet",
+            "from_house",
+            "aspects"
+          ],
+          "title": "GrahaDrishtiValue",
+          "type": "object"
+        },
+        "HealthResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status"
+          ],
+          "title": "HealthResponse",
+          "type": "object"
+        },
+        "HouseLordPositionValue": {
+          "additionalProperties": true,
+          "properties": {
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "lord": {
+              "title": "Lord",
+              "type": "string"
+            },
+            "lord_house": {
+              "title": "Lord House",
+              "type": "integer"
+            },
+            "lord_sign": {
+              "title": "Lord Sign",
+              "type": "string"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "house",
+            "sign",
+            "lord",
+            "lord_house",
+            "lord_sign"
+          ],
+          "title": "HouseLordPositionValue",
+          "type": "object"
+        },
+        "HouseLordValue": {
+          "additionalProperties": true,
+          "properties": {
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "lord": {
+              "title": "Lord",
+              "type": "string"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "house",
+            "sign",
+            "lord"
+          ],
+          "title": "HouseLordValue",
+          "type": "object"
+        },
+        "HouseOccupantsValue": {
+          "additionalProperties": true,
+          "properties": {
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "occupants": {
+              "items": {
+                "type": "string"
+              },
+              "title": "Occupants",
+              "type": "array"
+            }
+          },
+          "required": [
+            "house",
+            "occupants"
+          ],
+          "title": "HouseOccupantsValue",
+          "type": "object"
+        },
+        "HouseValue": {
+          "additionalProperties": true,
+          "properties": {
+            "degree_in_sign": {
+              "title": "Degree In Sign",
+              "type": "number"
+            },
+            "house": {
+              "title": "House",
+              "type": "integer"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "house",
+            "longitude",
+            "sign",
+            "degree_in_sign"
+          ],
+          "title": "HouseValue",
+          "type": "object"
+        },
+        "HousesResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "houses": {
+              "items": {
+                "$ref": "#/components/schemas/HouseValue"
+              },
+              "title": "Houses",
+              "type": "array"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "houses"
+          ],
+          "title": "HousesResponse",
+          "type": "object"
+        },
+        "LagnaResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "lagna": {
+              "$ref": "#/components/schemas/LagnaValue"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "lagna"
+          ],
+          "title": "LagnaResponse",
+          "type": "object"
+        },
+        "LagnaValue": {
+          "additionalProperties": true,
+          "properties": {
+            "degree_in_sign": {
+              "title": "Degree In Sign",
+              "type": "number"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name",
+            "longitude",
+            "sign",
+            "degree_in_sign"
+          ],
+          "title": "LagnaValue",
+          "type": "object"
+        },
+        "PlanetPositionsResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "planet": {
+              "items": {
+                "$ref": "#/components/schemas/PlanetResponse"
+              },
+              "title": "Planet",
+              "type": "array"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "planet"
+          ],
+          "title": "PlanetPositionsResponse",
+          "type": "object"
+        },
+        "PlanetResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "degree_in_sign": {
+              "title": "Degree In Sign",
+              "type": "number"
+            },
+            "latitude": {
+              "title": "Latitude",
+              "type": "number"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "nakshatra": {
+              "title": "Nakshatra",
+              "type": "string"
+            },
+            "nakshatra_lord": {
+              "title": "Nakshatra Lord",
+              "type": "string"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "pada": {
+              "title": "Pada",
+              "type": "integer"
+            },
+            "retrograde": {
+              "title": "Retrograde",
+              "type": "boolean"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            },
+            "speed": {
+              "title": "Speed",
+              "type": "number"
+            }
+          },
+          "required": [
+            "name",
+            "longitude",
+            "latitude",
+            "speed",
+            "retrograde",
+            "sign",
+            "degree_in_sign",
+            "nakshatra",
+            "nakshatra_lord",
+            "pada"
+          ],
+          "title": "PlanetResponse",
+          "type": "object"
+        },
+        "PlanetStrengthValue": {
+          "additionalProperties": true,
+          "properties": {
+            "planet": {
+              "title": "Planet",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "score": {
+              "title": "Score",
+              "type": "integer"
+            },
+            "strength": {
+              "title": "Strength",
+              "type": "string"
+            }
+          },
+          "required": [
+            "planet",
+            "strength",
+            "score",
+            "reason"
+          ],
+          "title": "PlanetStrengthValue",
+          "type": "object"
+        },
+        "RasiChartResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "conjunctions": {
+              "items": {
+                "$ref": "#/components/schemas/ConjunctionValue"
+              },
+              "title": "Conjunctions",
+              "type": "array"
+            },
+            "graha_drishti": {
+              "items": {
+                "$ref": "#/components/schemas/GrahaDrishtiValue"
+              },
+              "title": "Graha Drishti",
+              "type": "array"
+            },
+            "house_lord_positions": {
+              "items": {
+                "$ref": "#/components/schemas/HouseLordPositionValue"
+              },
+              "title": "House Lord Positions",
+              "type": "array"
+            },
+            "house_lords": {
+              "items": {
+                "$ref": "#/components/schemas/HouseLordValue"
+              },
+              "title": "House Lords",
+              "type": "array"
+            },
+            "house_occupants": {
+              "items": {
+                "$ref": "#/components/schemas/HouseOccupantsValue"
+              },
+              "title": "House Occupants",
+              "type": "array"
+            },
+            "houses": {
+              "items": {
+                "$ref": "#/components/schemas/HouseValue"
+              },
+              "title": "Houses",
+              "type": "array"
+            },
+            "lagna": {
+              "$ref": "#/components/schemas/RasiLagnaValue"
+            },
+            "planet_scores": {
+              "additionalProperties": {
+                "type": "integer"
+              },
+              "title": "Planet Scores",
+              "type": "object"
+            },
+            "planet_strengths": {
+              "items": {
+                "$ref": "#/components/schemas/PlanetStrengthValue"
+              },
+              "title": "Planet Strengths",
+              "type": "array"
+            },
+            "planets": {
+              "items": {
+                "$ref": "#/components/schemas/ChartPlanetValue"
+              },
+              "title": "Planets",
+              "type": "array"
+            },
+            "yogas": {
+              "items": {
+                "$ref": "#/components/schemas/YogaValue"
+              },
+              "title": "Yogas",
+              "type": "array"
+            }
+          },
+          "required": [
+            "houses",
+            "lagna",
+            "house_lords",
+            "house_lord_positions",
+            "house_occupants",
+            "conjunctions",
+            "graha_drishti",
+            "yogas",
+            "planet_strengths",
+            "planet_scores",
+            "planets"
+          ],
+          "title": "RasiChartResponse",
+          "type": "object"
+        },
+        "RasiLagnaValue": {
+          "additionalProperties": true,
+          "properties": {
+            "degree": {
+              "title": "Degree",
+              "type": "number"
+            },
+            "longitude": {
+              "title": "Longitude",
+              "type": "number"
+            },
+            "sign": {
+              "title": "Sign",
+              "type": "string"
+            }
+          },
+          "required": [
+            "longitude",
+            "sign",
+            "degree"
+          ],
+          "title": "RasiLagnaValue",
+          "type": "object"
+        },
+        "RootResponse": {
+          "additionalProperties": true,
+          "properties": {
+            "engine": {
+              "title": "Engine",
+              "type": "string"
+            },
+            "status": {
+              "title": "Status",
+              "type": "string"
+            }
+          },
+          "required": [
+            "engine",
+            "status"
+          ],
+          "title": "RootResponse",
+          "type": "object"
+        },
+        "YogaValue": {
+          "additionalProperties": true,
+          "properties": {
+            "found": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Found"
+            },
+            "house": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "House"
+            },
+            "name": {
+              "title": "Name",
+              "type": "string"
+            },
+            "reason": {
+              "title": "Reason",
+              "type": "string"
+            },
+            "score": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Score"
+            },
+            "strength": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Strength"
+            }
+          },
+          "required": [
+            "name",
+            "reason"
+          ],
+          "title": "YogaValue",
+          "type": "object"
+        },
         "HTTPValidationError": {
           "properties": {
             "detail": {
@@ -70,7 +729,9 @@
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/RootResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -118,13 +779,25 @@
                 "title": "Longitude",
                 "type": "number"
               }
+            },
+            {
+              "in": "query",
+              "name": "timezone",
+              "required": false,
+              "schema": {
+                "default": 0.0,
+                "title": "Timezone",
+                "type": "number"
+              }
             }
           ],
           "responses": {
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/HousesResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -185,13 +858,25 @@
                 "title": "Longitude",
                 "type": "number"
               }
+            },
+            {
+              "in": "query",
+              "name": "timezone",
+              "required": false,
+              "schema": {
+                "default": 0.0,
+                "title": "Timezone",
+                "type": "number"
+              }
             }
           ],
           "responses": {
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/LagnaResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -234,13 +919,25 @@
                 "title": "Time",
                 "type": "string"
               }
+            },
+            {
+              "in": "query",
+              "name": "timezone",
+              "required": false,
+              "schema": {
+                "default": 0.0,
+                "title": "Timezone",
+                "type": "number"
+              }
             }
           ],
           "responses": {
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/PlanetPositionsResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -301,13 +998,25 @@
                 "title": "Longitude",
                 "type": "number"
               }
+            },
+            {
+              "in": "query",
+              "name": "timezone",
+              "required": false,
+              "schema": {
+                "default": 0.0,
+                "title": "Timezone",
+                "type": "number"
+              }
             }
           ],
           "responses": {
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/RasiChartResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -382,7 +1091,9 @@
             "200": {
               "content": {
                 "application/json": {
-                  "schema": {}
+                  "schema": {
+                    "$ref": "#/components/schemas/HealthResponse"
+                  }
                 }
               },
               "description": "Successful Response"
@@ -604,6 +1315,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 16.3319,
+          "longitude": 166.3319,
+          "sign": "கன்னி"
+        },
         "conjunctions": [
           {
             "count": 4,
@@ -1245,6 +1961,25 @@
             "score": 90
           },
           {
+            "name": "Dhana Yoga",
+            "score": 85,
+            "reason": "2nd lord Venus and 5th lord Saturn are together in House 12"
+          },
+          {
+            "found": true,
+            "house": 11,
+            "name": "Gaja Kesari Yoga",
+            "reason": "Jupiter is in House 11, 1st from Moon in House 11",
+            "strength": "Normal"
+          },
+          {
+            "found": true,
+            "house": 10,
+            "name": "Neecha Bhanga Yoga",
+            "reason": "Saturn is debilitated in மேஷம், but its sign lord Mars is placed in Kendra House 10, causing Neecha Bhanga",
+            "strength": "Normal"
+          },
+          {
             "name": "Harsha Yoga",
             "reason": "Saturn (6th Lord) is placed in House 12",
             "score": 85
@@ -1462,6 +2197,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 11.428171,
+          "longitude": 341.428171,
+          "sign": "மீனம்"
+        },
         "conjunctions": [
           {
             "count": 2,
@@ -2308,6 +3048,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 19.590686,
+          "longitude": 229.590686,
+          "sign": "விருச்சிகம்"
+        },
         "conjunctions": [
           {
             "count": 2,
@@ -2950,6 +3695,18 @@
             "score": 90
           },
           {
+            "name": "Dhana Yoga",
+            "score": 85,
+            "reason": "11th lord Venus and 5th lord Mars are together in House 10"
+          },
+          {
+            "found": true,
+            "house": 10,
+            "name": "Neecha Bhanga Yoga",
+            "reason": "Sun is debilitated in துலாம், but its sign lord Venus is placed in Kendra House 10, causing Neecha Bhanga",
+            "strength": "Normal"
+          },
+          {
             "name": "Sarala Yoga",
             "reason": "Mercury (8th Lord) is placed in House 12",
             "score": 85
@@ -3167,6 +3924,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 26.636003,
+          "longitude": 176.636003,
+          "sign": "கன்னி"
+        },
         "conjunctions": [
           {
             "count": 3,
@@ -3797,6 +4559,11 @@
             "score": 90
           },
           {
+            "name": "Dhana Yoga",
+            "score": 85,
+            "reason": "11th lord Moon and 5th lord Saturn are together in House 4"
+          },
+          {
             "name": "Vimala Yoga",
             "reason": "Sun (12th Lord) is placed in House 8",
             "score": 85
@@ -4014,6 +4781,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 26.794997,
+          "longitude": 296.794997,
+          "sign": "மகரம்"
+        },
         "conjunctions": [
           {
             "count": 3,
@@ -4868,6 +5640,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 15.224363,
+          "longitude": 75.224363,
+          "sign": "மிதுனம்"
+        },
         "conjunctions": [
           {
             "count": 2,
@@ -5754,6 +6531,11 @@
         "status": "success"
       },
       "rasi_chart": {
+        "lagna": {
+          "degree": 28.574944,
+          "longitude": 358.574944,
+          "sign": "மீனம்"
+        },
         "conjunctions": [
           {
             "count": 2,
@@ -6376,6 +7158,11 @@
             "name": "Raja Yoga",
             "reason": "Jupiter (Lord of House 10) and Jupiter (Lord of House 1) are together in House 12",
             "score": 90
+          },
+          {
+            "name": "Dhana Yoga",
+            "score": 85,
+            "reason": "2nd lord Venus and 5th lord Moon are together in House 7"
           },
           {
             "name": "Vimala Yoga",

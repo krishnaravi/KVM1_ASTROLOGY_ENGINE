@@ -1,5 +1,8 @@
 from fastapi import FastAPI
 from core.constants import ZODIAC_SIGNS
+from core.swisseph_service import get_julian_day
+from models.response_models import RootResponse
+from validators.api_input_validator import validate_api_inputs
 from routers.lagna import router as lagna_router
 from routers.health import router as health_router
 from routers.planet import router as planet_router
@@ -10,7 +13,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
-@app.get("/")
+@app.get("/", response_model=RootResponse)
 def root():
     return {
         "engine": "KVM1",
@@ -18,7 +21,6 @@ def root():
     }
 from fastapi.middleware.cors import CORSMiddleware
 import swisseph as swe
-from datetime import datetime
 
 
 
@@ -36,18 +38,12 @@ app.include_router(planet_router)
 app.include_router(house_router)
 app.include_router(chart_router)
 
-# லஹிரி அயனாம்ச முறையைத் தேர்ந்தெடுத்தல்
-swe.set_sid_mode(swe.SIDM_LAHIRI)
-
 @app.get("/calculate-horoscope")
 def calculate_horoscope(date_str: str, time_str: str):
+    validate_api_inputs(date_str, time_str)
     try:
-        # 1. வேர்ட்பிரஸ் அனுப்பும் தேதியையும் நேரத்தையும் பிரித்தல் (Format: YYYY-MM-DD, HH:MM)
-        dt = datetime.strptime(f"{date_str} {time_str}", "%Y-%m-%d %H:%M")
-        
-        # 2. சுவிஸ் எபிமெரிஸிற்கான ஜூலியன் நாளாக (Julian Day) மாற்றுதல்
-        # (இந்திய நேரப்படி கணிக்க எளிமைக்காக UTC மாற்றாமல் நேரடியாக மணிநேரம் கணக்கிடப்பட்டுள்ளது)
-        julian_day = swe.julday(dt.year, dt.month, dt.day, dt.hour + dt.minute/60.0)
+        # 1. Convert the legacy UTC-default input through the centralized JD service.
+        julian_day = get_julian_day(date_str, time_str)
         
         # 3. சூரியன் மற்றும் சந்திரனின் நிலைகளை 'நிராயண' (Sidereal) இந்திய முறையில் கணக்கிடுதல்
         # சூரியன் (SE_SUN = 0)

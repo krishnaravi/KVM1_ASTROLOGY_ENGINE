@@ -6,6 +6,7 @@ def get_houses(
     time_str: str,
     latitude: float,
     longitude: float,
+    timezone: float = 0.0,
 ):
     """
     Backward-compatible wrapper.
@@ -20,4 +21,5 @@ def get_houses(
         time_str=time_str,
         latitude=latitude,
         longitude=longitude,
+        timezone=timezone,
     )

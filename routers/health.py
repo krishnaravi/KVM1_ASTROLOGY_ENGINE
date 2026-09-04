@@ -7,11 +7,12 @@ from domain.versioning import ENGINE_METADATA
 from infrastructure.container import container
 from core.interfaces.cache_interface import ICacheProvider
 from infrastructure.cache.two_level_cache import TwoLevelCache
+from models.response_models import HealthResponse
 
 router = APIRouter()
 
 
-@router.get("/health")
+@router.get("/health", response_model=HealthResponse)
 def health():
     return {"status": "healthy"}
 

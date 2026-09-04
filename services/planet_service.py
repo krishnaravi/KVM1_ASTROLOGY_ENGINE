@@ -37,9 +37,9 @@ def get_planet_position(jd: float, planet_name: str, planet_id: int):
     )
 
 
-def get_all_planets(date_str: str, time_str: str):
+def get_all_planets(date_str: str, time_str: str, timezone: float = 0.0):
 
-    jd = get_julian_day(date_str, time_str)
+    jd = get_julian_day(date_str, time_str, timezone)
 
     planets = []
 

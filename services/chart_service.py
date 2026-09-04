@@ -41,6 +41,7 @@ def build_rasi_chart(
     time: str,
     latitude: float,
     longitude: float,
+    timezone: float = 0.0,
 ):
 
     pipeline = ChartPipeline()
@@ -52,6 +53,7 @@ def build_rasi_chart(
     raw_planets = get_all_planets(
         date,
         time,
+        timezone,
     )
 
     houses = get_houses(
@@ -59,6 +61,7 @@ def build_rasi_chart(
         time,
         latitude,
         longitude,
+        timezone,
     )
 
     # --------------------------------------------------
@@ -127,6 +130,12 @@ def build_rasi_chart(
 
         "houses": houses,
 
+        "lagna": {
+            "longitude": houses[0]["longitude"],
+            "sign": houses[0]["sign"],
+            "degree": houses[0]["degree_in_sign"],
+        },
+
         "house_lords": house_lords,
 
         "house_lord_positions": house_lord_positions,
@@ -183,6 +192,8 @@ def build_rasi_chart(
     # --------------------------------------------------
 
     pipeline.add("houses", houses)
+
+    pipeline.add("lagna", chart["lagna"])
 
     pipeline.add("house_lords", house_lords)
 
