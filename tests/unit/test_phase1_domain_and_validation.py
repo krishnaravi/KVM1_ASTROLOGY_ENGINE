@@ -24,10 +24,10 @@ class TestPhase1DomainAndValidation(unittest.TestCase):
     def test_engine_metadata_instance(self):
         self.assertIsInstance(ENGINE_METADATA, EngineMetadata)
         self.assertEqual(ENGINE_METADATA.api_version, "1.0.0")
-        self.assertEqual(ENGINE_METADATA.engine_version, "2.0.0")
+        self.assertEqual(ENGINE_METADATA.engine_version, "2.1.0")
         self.assertEqual(ENGINE_METADATA.rule_version, "1.0.0")
         self.assertEqual(ENGINE_METADATA.ephemeris_version, "Swiss Ephemeris 2.10.03")
-        self.assertEqual(ENGINE_METADATA.build_version, "2.0.0-build.1")
+        self.assertEqual(ENGINE_METADATA.build_version, "2.1.0-build.1")
         self.assertEqual(ENGINE_METADATA.ayanamsa, "Lahiri")
 
     def test_version_constants_backward_compatibility(self):

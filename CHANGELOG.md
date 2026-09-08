@@ -1,6 +1,17 @@
 # CHANGELOG - KVM1 Astrology Engine
 
 All notable changes to the KVM1 Astrology Engine are documented in this file.
+## [2.1.0] - 2026-09-04
+
+### Release hygiene
+- Aligned engine and build metadata with the v2.1.0 release.
+- Added the deployment Dockerfile to source control without changing its behavior.
+- Added a development/test dependency manifest and v2.1.0 release notes.
+
+### Verified
+- Regression suite: 126 collected, 126 passed, 0 failed, 0 skipped, 0 warnings.
+- Verified from source commit `5e8bc7fef2cead2af4e7a4d90df223e593ad53a5`.
+
 
 ## [2.0.0] - 2026-08-06
 
